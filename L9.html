@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sexual Offences Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #4a6fa5;
+            --secondary-color: #166d67;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --legal-color: #9c27b0;
+            --medical-color: #4caf50;
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 1s ease;
+        }
+        
+        h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .content-wrapper {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            align-self: flex-start;
+        }
+        
+        .main-content {
+            flex: 2;
+        }
+        
+        .nav-list {
+            list-style: none;
+        }
+        
+        .nav-item {
+            margin-bottom: 10px;
+        }
+        
+        .nav-link {
+            display: block;
+            padding: 12px 15px;
+            background: var(--light-color);
+            border-radius: 6px;
+            color: var(--dark-color);
+            text-decoration: none;
+            transition: var(--transition);
+            font-weight: 500;
+            border-left: 4px solid transparent;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: rgba(74, 111, 165, 0.1);
+            border-left-color: var(--primary-color);
+        }
+        
+        .content-section {
+            display: none;
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.5s ease;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        .topic-card {
+            background: var(--light-color);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            border-left: 4px solid var(--primary-color);
+        }
+        
+        .topic-card h3 {
+            margin-bottom: 15px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .topic-card ul {
+            list-style-type: none;
+        }
+        
+        .topic-card li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .topic-card li:before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .legal-term {
+            color: var(--legal-color);
+            font-weight: 600;
+        }
+        
+        .medical-term {
+            color: var(--medical-color);
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+            border-top: 1px solid #dee2e6;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+            }
+            
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Rape & Sexual Offences</h1>
+            <p class="subtitle">Legal and Medical Summary</p>
+        </header>
+        
+        <div class="content-wrapper">
+            <div class="sidebar">
+                <h2>Contents</h2>
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="#rape-definition" class="nav-link active">Rape Definition</a></li>
+                    <li class="nav-item"><a href="#valid-consent" class="nav-link">Conditions of Valid Consent</a></li>
+                    <li class="nav-item"><a href="#examination-victim" class="nav-link">Examination of Victim</a></li>
+                    <li class="nav-item"><a href="#hymen-examination" class="nav-link">Hymen Examination</a></li>
+                    <li class="nav-item"><a href="#virginity" class="nav-link">Virginity</a></li>
+                    <li class="nav-item"><a href="#pregnancy-diagnosis" class="nav-link">Pregnancy Diagnosis</a></li>
+                    <li class="nav-item"><a href="#examination-accused" class="nav-link">Examination of the Accused</a></li>
+                    <li class="nav-item"><a href="#sexual-perversions" class="nav-link">Sexual Perversions</a></li>
+                </ul>
+            </div>
+            
+            <div class="main-content">
+                <section id="rape-definition" class="content-section active">
+                    <h2><i class="fas fa-gavel"></i> Rape Definition</h2>
+                    <div class="topic-card">
+                        <p>Sexual intercourse between a male and a female other than her husband, against her consent. Penile penetration (partial or complete) is enough to constitute rape.</p>
+                    </div>
+                    <div class="warning-box">
+                        <i class="fas fa-exclamation-circle"></i> <strong>Important:</strong> Even partial penetration is sufficient to constitute the crime of rape under legal definitions.
+                    </div>
+                </section>
+                
+                <section id="valid-consent" class="content-section">
+                    <h2><i class="fas fa-check-circle"></i> Conditions of Valid Consent</h2>
+                    <div class="topic-card">
+                        <h3><i class="fas fa-list-ol"></i> Requirements for Valid Consent</h3>
+                        <ul>
+                            <li>Female above 18 years of age</li>
+                            <li>Sane (not mentally retarded)</li>
+                            <li>Conscious, not under anesthesia/coma</li>
+                            <li>Not under influence of drugs (alcohol, cannabis, opium)</li>
+                            <li>Not under fraud or deception</li>
+                            <li>Not under fear, violence, or threat</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="examination-victim" class="content-section">
+                    <h2><i class="fas fa-user-injured"></i> Examination of Rape Cases - Victim</h2>
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-file-medical"></i> Consent Requirements</h3>
+                            <ul>
+                                <li>For victims >21 years: consent from female herself</li>
+                                <li>For victims <21 years: consent from guardian</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-history"></i> History Taking</h3>
+                            <ul>
+                                <li>Date and time of incident</li>
+                                <li>Location of incident</li>
+                                <li>Any delay in reporting</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-eye"></i> Observation</h3>
+                        <ul>
+                            <li>Gait and movement patterns</li>
+                            <li>Behavior and emotional state</li>
+                            <li>Mentality and cognitive state</li>
+                            <li>Body build and physical characteristics</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-search"></i> General Examination</h3>
+                            <ul>
+                                <li>Torn or damaged clothing</li>
+                                <li>Semen or blood stains on clothing/body</li>
+                                <li>Abrasions or bruises on body</li>
+                                <li>Foreign hair or materials on body</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-procedures"></i> Local Examination</h3>
+                            <ul>
+                                <li>Vulval edema or swelling</li>
+                                <li>Perineal laceration or tearing</li>
+                                <li>Hymenal rupture or damage</li>
+                                <li>Vaginal bleeding or presence of semen</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="hymen-examination" class="content-section">
+                    <h2><i class="fas fa-search-plus"></i> Hymen Examination</h2>
+                    <div class="topic-card">
+                        <p>The hymen is a thin membrane partially covering the vaginal orifice. Rupture typically causes spotting of blood.</p>
+                    </div>
+                    
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-shapes"></i> Hymen Types</h3>
+                            <ul>
+                                <li>Crescentic</li>
+                                <li>Annular</li>
+                                <li>Dentate</li>
+                                <li>Fimbriated</li>
+                                <li>Imperforated</li>
+                                <li>Cribriform</li>
+                                <li>Septate</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-crash"></i> Causes of Rupture</h3>
+                            <ul>
+                                <li>Sexual intercourse</li>
+                                <li>Physical trauma</li>
+                                <li>Pathological conditions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-clock"></i> Recent Rupture</h3>
+                            <ul>
+                                <li>Tender to touch</li>
+                                <li>Bloody appearance</li>
+                                <li>Translucent edges</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-hourglass-end"></i> Old Rupture</h3>
+                            <ul>
+                                <li>No tenderness</li>
+                                <li>Opaque appearance</li>
+                                <li>Healed edges</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="virginity" class="content-section">
+                    <h2><i class="fas fa-venus"></i> Virginity</h2>
+                    <div class="topic-card">
+                        <p>A virgin is defined as someone who has not engaged in sexual intercourse.</p>
+                    </div>
+                    
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-diagnoses"></i> Virginity Diagnosis</h3>
+                            <ul>
+                                <li>Small or underdeveloped breasts</li>
+                                <li>Intact hymen</li>
+                                <li>Narrow vaginal orifice</li>
+                                <li>Intact post commissure</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-exclamation-triangle"></i> False Virgin</h3>
+                            <ul>
+                                <li>Has engaged in sexual intercourse</li>
+                                <li>But presents with intact hymen</li>
+                                <li>Possible due to hymen elasticity</li>
+                                <li>Or non-penetrative sexual activity</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="pregnancy-diagnosis" class="content-section">
+                    <h2><i class="fas fa-baby"></i> Pregnancy Diagnosis</h2>
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-question-circle"></i> Probable Signs</h3>
+                            <ul>
+                                <li>Morning sickness</li>
+                                <li>Vomiting</li>
+                                <li>Enlarged abdomen</li>
+                                <li>Darkened areola</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-check-double"></i> Sure Signs</h3>
+                            <ul>
+                                <li>Fetal movement</li>
+                                <li>Palpation of fetus</li>
+                                <li>Auscultation of fetal heart</li>
+                                <li>Sonar confirmation</li>
+                                <li>Positive pregnancy test</li>
+                            </ul>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="examination-accused" class="content-section">
+                    <h2><i class="fas fa-user-shield"></i> Examination of the Accused</h2>
+                    <div class="topic-card">
+                        <p>Consent is required for examination of the accused. Compare history with victim's account.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-birthday-cake"></i> Age Determination</h3>
+                        <ul>
+                            <li>Individuals under 14 years are usually considered incapable of rape</li>
+                            <li>Assessment of physical development</li>
+                            <li>Evaluation of mental state</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-tshirt"></i> Clothing Examination</h3>
+                            <ul>
+                                <li>Torn or damaged clothing</li>
+                                <li>Blood stains</li>
+                                <li>Victim's hair or fibers</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-user-injured"></i> Injury Assessment</h3>
+                            <ul>
+                                <li>Nail or bite marks on chest/neck/hands</li>
+                                <li>Genital injuries</li>
+                                <li>Presence of venereal disease</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-dna"></i> Forensic Evidence</h3>
+                        <ul>
+                            <li>Semen comparison with victim</li>
+                            <li>DNA fingerprinting crucial for identification</li>
+                            <li>Smell of alcohol or other substances</li>
+                        </ul>
+                    </div>
+                </section>
+                
+                <section id="sexual-perversions" class="content-section">
+                    <h2><i class="fas fa-ban"></i> Sexual Perversions (Paraphilias)</h2>
+                    <div class="topic-card">
+                        <h3><i class="fas fa-male"></i> Sodomy</h3>
+                        <p>Anal intercourse between males.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-paw"></i> Bestiality</h3>
+                        <p>Intercourse with animals.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-users"></i> Incest</h3>
+                        <p>Intercourse between relatives who cannot legally marry.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-female"></i> Lesbianism</h3>
+                        <p>Sexual acts between females.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-skull"></i> Necrophilia</h3>
+                        <p>Intercourse with corpses.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Indecent Assault</h3>
+                        <p>Sexual acts or words without penetration between non-married persons.</p>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-eye"></i> Exhibitionism</h3>
+                        <p>Exposing genitals for sexual arousal.</p>
+                    </div>
+                    
+                    <div class="two-column">
+                        <div class="topic-card">
+                            <h3><i class="fas fa-fist-raised"></i> Sadism</h3>
+                            <p>Arousal by inflicting pain on others.</p>
+                        </div>
+                        
+                        <div class="topic-card">
+                            <h3><i class="fas fa-heartbeat"></i> Masochism</h3>
+                            <p>Arousal by receiving pain.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="topic-card">
+                        <h3><i class="fas fa-exclamation-circle"></i> Buggery</h3>
+                        <p>Anal intercourse between male and female.</p>
+                    </div>
+                </section>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Legal and Medical Information Summary | For educational purposes only</p>
+            <p>Always consult legal and medical professionals for specific advice</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href').substring(1);
+                    
+                    // Update active navigation link
+                    navLinks.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show relevant section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === targetId) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carbon Monoxide Poisoning - Full Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --cherry-red: #ff073a;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .content-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .nav-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-content {
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+        }
+        
+        .card-content.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .highlight {
+            background-color: rgba(44, 62, 80, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .danger {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .cherry-red {
+            background-color: rgba(255, 7, 58, 0.1);
+            color: var(--cherry-red);
+            border-left: 4px solid var(--cherry-red);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .badge-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .cohb-meter {
+            width: 100%;
+            height: 30px;
+            background: linear-gradient(to right, #27ae60, #f39c12, #e74c3c);
+            border-radius: 15px;
+            margin: 1rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cohb-level {
+            position: absolute;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.3);
+            width: 0%;
+            transition: width 1s ease;
+        }
+        
+        .cohb-markers {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: 35px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .cohb-label {
+            text-align: center;
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease;
+        }
+        
+        .slide-in {
+            animation: slideInLeft 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .content-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Carbon Monoxide Poisoning</h1>
+            <p class="subtitle">Complete Medical Summary</p>
+            
+            <div class="content-nav">
+                <button class="nav-btn active" onclick="showSection('intro')">
+                    <i class="fas fa-info-circle"></i> Introduction
+                </button>
+                <button class="nav-btn" onclick="showSection('sources')">
+                    <i class="fas fa-fire"></i> Sources
+                </button>
+                <button class="nav-btn" onclick="showSection('patho')">
+                    <i class="fas fa-heartbeat"></i> Pathophysiology
+                </button>
+                <button class="nav-btn" onclick="showSection('risk')">
+                    <i class="fas fa-exclamation-triangle"></i> Risk Factors
+                </button>
+                <button class="nav-btn" onclick="showSection('symptoms')">
+                    <i class="fas fa-stethoscope"></i> Symptoms
+                </button>
+                <button class="nav-btn" onclick="showSection('complications')">
+                    <i class="fas fa-procedures"></i> Complications
+                </button>
+                <button class="nav-btn" onclick="showSection('treatment')">
+                    <i class="fas fa-first-aid"></i> Treatment
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="content-section active" id="intro-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('intro-content')">
+                        <h2 class="card-title"><i class="fas fa-info-circle"></i> Introduction & Physical Characteristics</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="intro-content">
+                        <ul>
+                            <li>Carbon monoxide (CO) is a leading cause of poisoning deaths, especially in industrial regions</li>
+                            <li>It is <span class="highlight">colorless, odorless, tasteless, non-irritant</span></li>
+                            <li>It is <span class="highlight">lighter than air</span>, allowing it to disperse rapidly</li>
+                            <li>Often called the "silent killer" due to its undetectable nature</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sources Section -->
+        <div class="content-section" id="sources-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('sources-content')">
+                        <h2 class="card-title"><i class="fas fa-fire"></i> Sources of Carbon Monoxide</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="sources-content">
+                        <div class="info">
+                            <h3><i class="fas fa-industry"></i> Common Sources</h3>
+                            <ul>
+                                <li>Produced by cars, trucks, gasoline engines</li>
+                                <li>Stoves, lanterns, burning charcoal/wood</li>
+                                <li>Gas heating systems</li>
+                                <li>Tobacco smoke is a major household source</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning">
+                            <h3><i class="fas fa-smoking"></i> COHb Levels</h3>
+                            <ul>
+                                <li>Smokers: 5–6%</li>
+                                <li>Nonsmokers: 0.5%</li>
+                                <li>Passive smokers: 2–3%</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Pathophysiology Section -->
+        <div class="content-section" id="patho-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('patho-content')">
+                        <h2 class="card-title"><i class="fas fa-heartbeat"></i> Pathophysiology</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="patho-content">
+                        <div class="danger">
+                            <h3><i class="fas fa-tint"></i> 1. Hemoglobin Impairment</h3>
+                            <p>Hb has <span class="highlight">240x greater affinity for CO than O₂</span> → tissue hypoxia</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-heart"></i> 2. Myoglobin Impairment</h3>
+                            <p>CO competes with O₂ → myocardial ischemia, hypotension</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-biohazard"></i> 3. Mitochondrial Impairment</h3>
+                            <p>CO binds cytochrome oxidase → blocks oxidative phosphorylation</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Risk Factors Section -->
+        <div class="content-section" id="risk-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('risk-content')">
+                        <h2 class="card-title"><i class="fas fa-exclamation-triangle"></i> Risk Factors & Mode of Poisoning</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="risk-content">
+                        <div class="warning">
+                            <h3><i class="fas fa-user-injured"></i> Risk Factors</h3>
+                            <ul>
+                                <li>High altitude</li>
+                                <li>Increased ventilation</li>
+                                <li>Children</li>
+                                <li>Anemia</li>
+                                <li>Heart or brain disease</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-exclamation-circle"></i> Mode of Poisoning</h3>
+                            <ul>
+                                <li>Mostly accidental (closed garages, gas leaks, enclosed spaces in winter)</li>
+                                <li>Rarely suicidal</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-skull"></i> Fatal Dose</h3>
+                            <ul>
+                                <li>0.01% CO in air → 20% COHb</li>
+                                <li>0.1% CO → 50% COHb</li>
+                                <li>1% CO → 70% COHb</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Symptoms Section -->
+        <div class="content-section" id="symptoms-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('symptoms-content')">
+                        <h2 class="card-title"><i class="fas fa-stethoscope"></i> Signs & Symptoms</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="symptoms-content">
+                        <div class="cohb-meter">
+                            <div class="cohb-level" id="cohbIndicator"></div>
+                            <div class="cohb-markers">
+                                <span>0%</span>
+                                <span>20%</span>
+                                <span>40%</span>
+                                <span>60%</span>
+                                <span>80%</span>
+                                <span>100%</span>
+                            </div>
+                        </div>
+                        
+                        <div class="cohb-label" id="cohbLabel">Adjust COHb level to see symptoms</div>
+                        
+                        <input type="range" min="0" max="100" value="0" class="slider" id="cohbSlider" oninput="updateCohbLevel(this.value)">
+                        
+                        <div class="info" id="symptomInfo">
+                            <h3><i class="fas fa-info-circle"></i> Symptoms by COHb Level</h3>
+                            <p>Slide the indicator above to see symptoms at different COHb levels</p>
+                        </div>
+                        
+                        <div class="cherry-red">
+                            <h3><i class="fas fa-diagnoses"></i> Classic Postmortem Finding</h3>
+                            <p>Cherry-red skin & mucous membranes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Complications Section -->
+        <div class="content-section" id="complications-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('complications-content')">
+                        <h2 class="card-title"><i class="fas fa-procedures"></i> Complications</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="complications-content">
+                        <div class="danger">
+                            <h3><i class="fas fa-brain"></i> 1. Neuropsychiatric</h3>
+                            <p>Memory loss, ataxia, parkinsonism, depression</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-heart"></i> 2. Cardiovascular</h3>
+                            <p>Myocardial necrosis, angina, arrhythmia, accelerated atherosclerosis</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-lungs"></i> 3. Pulmonary</h3>
+                            <p>Aspiration pneumonia, dyspnea</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-eye"></i> 4. Ophthalmic</h3>
+                            <p>Retinal hemorrhage, ↓ light sensitivity</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-allergies"></i> 5. Dermatological</h3>
+                            <p>Bullae, sweat gland necrosis, alopecia</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-stomach"></i> 6. Gastrointestinal</h3>
+                            <p>Vomiting, diarrhea, bleeding</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-dna"></i> 7. Miscellaneous</h3>
+                            <p>Rhabdomyolysis</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Treatment Section -->
+        <div class="content-section" id="treatment-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('treatment-content')">
+                        <h2 class="card-title"><i class="fas fa-first-aid"></i> Treatment</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="treatment-content">
+                        <div class="info">
+                            <h3><i class="fas fa-bolt"></i> Immediate Treatment</h3>
+                            <ul>
+                                <li>Remove from exposure</li>
+                                <li>Secure airway</li>
+                                <li>Give 100% O₂ (10–12 L/min) until COHb <15–20%</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-plus-square"></i> Supportive Care</h3>
+                            <ul>
+                                <li>IV fluids, vasopressors</li>
+                                <li>Correct acidosis</li>
+                                <li>Mannitol/steroids for brain edema</li>
+                                <li>Urine alkalinization</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning">
+                            <h3><i class="fas fa-compress-arrows-alt"></i> Hyperbaric Oxygen (HBO)</h3>
+                            <p>Best in first 6 hrs, prevents delayed neurological complications</p>
+                            
+                            <h4>Indications:</h4>
+                            <ul>
+                                <li>COHb >40%</li>
+                                <li>Coma</li>
+                                <li>Pregnancy >20%</li>
+                                <li>Unconsciousness</li>
+                                <li>Arrhythmia</li>
+                                <li>Ischemia</li>
+                                <li>Severe acidosis (pH<7.2)</li>
+                            </ul>
+                            
+                            <h4>Mechanism:</h4>
+                            <p>Accelerates CO dissociation from Hb and cytochrome oxidase</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card animated" style="animation-delay: 0.2s;">
+                    <div class="card-header" onclick="toggleContent('investigations-content')">
+                        <h2 class="card-title"><i class="fas fa-diagnoses"></i> Investigations & Differential Diagnosis</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="investigations-content">
+                        <div class="info">
+                            <h3><i class="fas fa-vial"></i> Investigations</h3>
+                            <ul>
+                                <li><span class="highlight">CO-oximetry</span>: measures COHb directly</li>
+                                <li><span class="highlight">Dilution test</span>: COHb blood stays pink on dilution</li>
+                                <li><span class="highlight">Chest X-ray</span>: ground-glass, edema</li>
+                                <li><span class="highlight">ECG</span>: tachycardia, arrhythmia, ST/T-wave changes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-differential"></i> Differential Diagnosis</h3>
+                            <ul>
+                                <li>Alcohol intoxication</li>
+                                <li>Angina/MI</li>
+                                <li>Psychiatric illness</li>
+                                <li>Migraine</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Carbon Monoxide Poisoning - Medical Summary</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle content visibility
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling.querySelector('.toggle-btn');
+            
+            content.classList.toggle('hidden');
+            
+            if (content.classList.contains('hidden')) {
+                button.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            } else {
+                button.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            }
+        }
+        
+        // Function to show selected section
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Function to update COHb level display
+        function updateCohbLevel(value) {
+            document.getElementById('cohbIndicator').style.width = value + '%';
+            
+            let symptoms = "";
+            let severity = "";
+            
+            if (value < 20) {
+                symptoms = "Mild: headache, nausea, dizziness, blurred vision";
+                severity = "info";
+            } else if (value >= 20 && value <= 40) {
+                symptoms = "Moderate: severe headache, confusion, syncope, chest pain, tachypnea";
+                severity = "warning";
+            } else if (value >= 41 && value <= 59) {
+                symptoms = "Severe: arrhythmias, hypotension, ischemia, coma, convulsions, pulmonary edema";
+                severity = "danger";
+            } else {
+                symptoms = "Fatal: death";
+                severity = "cherry-red";
+            }
+            
+            document.getElementById('cohbLabel').textContent = value + "% COHb: " + symptoms.split(':')[0];
+            document.getElementById('symptomInfo').innerHTML = `
+                <h3><i class="fas fa-info-circle"></i> Symptoms at ${value}% COHb</h3>
+                <p>${symptoms}</p>
+            `;
+            document.getElementById('symptomInfo').className = severity;
+        }
+        
+        // Initialize COHb slider
+        document.addEventListener('DOMContentLoaded', function() {
+            // Set initial COHb level
+            updateCohbLevel(0);
+            
+            // Add animation to elements when they come into view
+            const animatedElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.visibility = 'hidden';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

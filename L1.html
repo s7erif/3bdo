@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregnancy and Delivery Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8a6bc9;
+            --secondary: #6c87c0;
+            --accent: #ff7d90;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --success: #28a745;
+            --info: #17a2b8;
+            --warning: #ffc107;
+            --danger: #dc3545;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-content {
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+        }
+        
+        .card-content.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .highlight {
+            background-color: rgba(138, 107, 201, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .badge-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease;
+        }
+        
+        .slide-in {
+            animation: slideInLeft 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Pregnancy and Delivery Summary</h1>
+            <p class="subtitle">Medical and medicolegal aspects of pregnancy and delivery</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="grid">
+            <div class="card animated">
+                <div class="card-header" onclick="toggleContent('mli-content')">
+                    <h2 class="card-title"><i class="fas fa-balance-scale"></i> Medicolegal Importance (MLI) of Pregnancy</h2>
+                    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-content" id="mli-content">
+                    <ul>
+                        <li><span class="badge badge-primary">Divorce</span> To increase alimony</li>
+                        <li><span class="badge badge-secondary">Widow</span> Inheritance rights</li>
+                        <li><span class="badge badge-accent">Death Sentence</span> Execution postponed until 2 years after delivery</li>
+                        <li><span class="badge badge-primary">Rape</span> Cases investigation</li>
+                        <li><span class="badge badge-secondary">Abortion</span> Criminal abortion investigation</li>
+                        <li><span class="badge badge-accent">Illegal Pregnancy</span> Related cases</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card animated" style="animation-delay: 0.2s;">
+                <div class="card-header" onclick="toggleContent('gestation-content')">
+                    <h2 class="card-title"><i class="fas fa-calendar-alt"></i> Gestational Period</h2>
+                    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-content" id="gestation-content">
+                    <p><span class="highlight">Normal:</span> 280 days = 40 weeks = 10 lunar months</p>
+                    <p><span class="highlight">Egyptian Law:</span></p>
+                    <ul>
+                        <li>Shortest: 6 months</li>
+                        <li>Longest: 12 months</li>
+                        <li>Child born &lt;6 months or &gt;12 months → paternity can be denied</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card animated" style="animation-delay: 0.4s;">
+                <div class="card-header" onclick="toggleContent('probable-signs-content')">
+                    <h2 class="card-title"><i class="fas fa-stethoscope"></i> Diagnosis of Pregnancy – Probable Signs</h2>
+                    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-content" id="probable-signs-content">
+                    <ul>
+                        <li><span class="highlight">Breast:</span> dark areola, Montgomery tubercles</li>
+                        <li><span class="highlight">Abdomen:</span> linea nigra, striae gravidarum</li>
+                        <li><span class="highlight">Vulva/Vagina:</span> dark coloration, secretions</li>
+                        <li><span class="highlight">Cervix:</span> secretions</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card animated" style="animation-delay: 0.6s;">
+                <div class="card-header" onclick="toggleContent('sure-signs-content')">
+                    <h2 class="card-title"><i class="fas fa-check-circle"></i> Diagnosis of Pregnancy – Sure Signs</h2>
+                    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-content" id="sure-signs-content">
+                    <ul>
+                        <li><span class="highlight">Clinical</span> (from 4th month): fetal movements, parts, fundal height, fetal heart sounds</li>
+                        <li><span class="highlight">Radiology:</span> Ultrasound (safe), X-ray obsolete</li>
+                        <li><span class="highlight">Laboratory:</span> HCG positive in urine (2 weeks after missed period)</li>
+                        <li><span class="highlight">Postmortem:</span> enlarged uterus, fetal age estimation, microscopic exam if early</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card animated" style="animation-delay: 0.8s;">
+                <div class="card-header" onclick="toggleContent('delivery-mli-content')">
+                    <h2 class="card-title"><i class="fas fa-baby"></i> Delivery – Medicolegal Importance</h2>
+                    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-content" id="delivery-mli-content">
+                    <ul>
+                        <li>Inheritance disputes</li>
+                        <li>Child exchange</li>
+                        <li>Infanticide</li>
+                        <li>Disputed paternity</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card animated" style="animation-delay: 1s;">
+                <div class="card-header" onclick="toggleContent('living-signs-content')">
+                    <h2 class="card-title"><i class="fas fa-heartbeat"></i> Signs of Delivery (in living)</h2>
+                    <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                </div>
+                <div class="card-content" id="living-signs-content">
+                    <ul>
+                        <li><span class="highlight">General:</span> exhaustion, pallor</li>
+                        <li><span class="highlight">Breast:</span> firm, full, dark areola, colostrum</li>
+                        <li><span class="highlight">Abdomen:</span> lax, flabby, striae albicans</li>
+                        <li><span class="highlight">Uterus:</span> Immediately after → above umbilicus; 1 week → midway; 10 days → inside pelvis; 6 weeks → normal</li>
+                        <li><span class="highlight">Vulva/Vagina:</span> perineal tears, lochial discharge (red → yellow → white → gone by 15 days)</li>
+                        <li><span class="highlight">Cervix:</span> soft, wide → closes gradually in 2 weeks</li>
+                        <li><span class="highlight">HCG:</span> positive</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="card animated" style="animation-delay: 1.2s;">
+            <div class="card-header" onclick="toggleContent('dead-signs-content')">
+                <h2 class="card-title"><i class="fas fa-table"></i> Signs of Delivery (in dead)</h2>
+                <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="card-content" id="dead-signs-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Duration</th>
+                            <th>Uterus weight</th>
+                            <th>Uterus length</th>
+                            <th>Placenta length</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="slide-in">
+                            <td>Immediately after</td>
+                            <td>1 kg</td>
+                            <td>25 cm</td>
+                            <td>10 cm</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.1s;">
+                            <td>1 week</td>
+                            <td>0.5 kg</td>
+                            <td>12 cm</td>
+                            <td>6 cm</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.2s;">
+                            <td>2 weeks</td>
+                            <td>350 g</td>
+                            <td>10 cm</td>
+                            <td>4 cm</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.3s;">
+                            <td>6 weeks</td>
+                            <td>100 g</td>
+                            <td>6 cm</td>
+                            <td>2 cm</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="card animated" style="animation-delay: 1.4s;">
+            <div class="card-header" onclick="toggleContent('difference-content')">
+                <h2 class="card-title"><i class="fas fa-not-equal"></i> Difference Between Nullipara & Multipara</h2>
+                <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+            </div>
+            <div class="card-content" id="difference-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Nullipara</th>
+                            <th>Multipara</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="slide-in">
+                            <td>Uterus length</td>
+                            <td>2 in</td>
+                            <td>3 in</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.1s;">
+                            <td>Uterus shape</td>
+                            <td>Triangular</td>
+                            <td>Globular</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.2s;">
+                            <td>Wall</td>
+                            <td>Thick</td>
+                            <td>Thin</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.3s;">
+                            <td>Cervical opening</td>
+                            <td>Small, round</td>
+                            <td>Transverse slit, lacerated</td>
+                        </tr>
+                        <tr class="slide-in" style="animation-delay: 0.4s;">
+                            <td>Mucosa</td>
+                            <td>With rugae (arbor vitae)</td>
+                            <td>Smooth, no rugae</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Pregnancy and Delivery Summary - Medical Legal Information</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle content visibility
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling.querySelector('.toggle-btn');
+            
+            content.classList.toggle('hidden');
+            
+            if (content.classList.contains('hidden')) {
+                button.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            } else {
+                button.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            }
+        }
+        
+        // Add animation to table rows when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.visibility = 'hidden';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abortion Summary - Medical Reference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: slideUp 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .toggle-btn {
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .toggle-btn:hover {
+            background: var(--primary);
+            transform: rotate(90deg);
+        }
+
+        .card-content {
+            overflow: hidden;
+            max-height: 1000px;
+            transition: max-height 0.5s ease;
+        }
+
+        .card-content.collapsed {
+            max-height: 0;
+        }
+
+        .definition-list {
+            list-style-type: none;
+        }
+
+        .definition-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .definition-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .badge-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .badge-success {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .badge-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-list {
+            list-style-type: none;
+        }
+
+        .content-list li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .content-list li:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .content-sublist {
+            list-style-type: circle;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            color: #777;
+            border-top: 1px solid #ddd;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+        }
+
+        .slideUp {
+            animation-name: slideUp;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animated fadeIn">
+            <h1>Abortion – Summary</h1>
+            <p class="subtitle">Medical Reference Guide</p>
+        </header>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Definition</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <ul class="definition-list">
+                    <li><span class="badge badge-primary">1</span> Expulsion of the contents of the gravid uterus before full term</li>
+                    <li><span class="badge badge-secondary">2</span> Up to 28 weeks → abortion</li>
+                    <li><span class="badge badge-secondary">3</span> 28 weeks to full term → premature birth</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-1">
+            <div class="card-header">
+                <h2 class="card-title">Medicolegal Importance (MLI)</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <ul class="content-list">
+                    <li>Claims against doctor performing abortion</li>
+                    <li>Claims against someone causing abortion (e.g., quarrel)</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-2">
+            <div class="card-header">
+                <h2 class="card-title">Types of Abortion – Spontaneous</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <ul class="content-list">
+                    <li>Occurs without interference (10%)</li>
+                    <li>Maternal causes: 
+                        <ul class="content-sublist">
+                            <li>Infections (syphilis, rubella)</li>
+                            <li>Fibroid</li>
+                            <li>Retroverted uterus</li>
+                            <li>Cervical incompetence</li>
+                        </ul>
+                    </li>
+                    <li>Fetal causes:
+                        <ul class="content-sublist">
+                            <li>Congenital anomalies</li>
+                            <li>Rh incompatibility</li>
+                            <li>Congenital infections</li>
+                            <li>Poly/oligohydramnios</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-3">
+            <div class="card-header">
+                <h2 class="card-title">Types of Abortion – Induced: Therapeutic</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <ul class="content-list">
+                    <li>Performed to save mother's life</li>
+                    <li>Requirements:
+                        <ul class="content-sublist">
+                            <li>Written consent</li>
+                            <li>Qualified doctor</li>
+                            <li>Hospital</li>
+                            <li>Official notification</li>
+                        </ul>
+                    </li>
+                    <li>Indications:
+                        <div class="two-column">
+                            <div>
+                                <span class="badge badge-accent">Maternal</span>
+                                <ul class="content-sublist">
+                                    <li>DM</li>
+                                    <li>CHD</li>
+                                    <li>CRF</li>
+                                    <li>LCF</li>
+                                    <li>Preeclampsia</li>
+                                    <li>Eclampsia</li>
+                                    <li>Hyperemesis gravidarum</li>
+                                    <li>Bleeding</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="badge badge-accent">Fetal</span>
+                                <ul class="content-sublist">
+                                    <li>Congenital anomalies</li>
+                                    <li>Intrauterine fetal death (IUFD)</li>
+                                </ul>
+                                <span class="badge badge-accent">Methods</span>
+                                <ul class="content-sublist">
+                                    <li>Drugs (PG)</li>
+                                    <li>D&C</li>
+                                    <li>Catheter/aspiration</li>
+                                    <li>C-section (late)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-4">
+            <div class="card-header">
+                <h2 class="card-title">Types of Abortion – Induced: Criminal</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <ul class="content-list">
+                    <li>Without medical indication, to destroy fetus</li>
+                    <li>Methods:
+                        <div class="two-column">
+                            <div>
+                                <span class="badge badge-warning">General violence</span>
+                                <ul class="content-sublist">
+                                    <li>Heavy exercise</li>
+                                    <li>Lifting</li>
+                                    <li>Jumping</li>
+                                    <li>Abdominal blow</li>
+                                </ul>
+                                
+                                <span class="badge badge-warning">Drugs/Ecobolics</span>
+                                <ul class="content-sublist">
+                                    <li>Ergometrine</li>
+                                    <li>PG</li>
+                                    <li>Pituitary extract</li>
+                                    <li>Quinine</li>
+                                    <li>Lead</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <span class="badge badge-warning">Local violence</span>
+                                <ul class="content-sublist">
+                                    <li>FB in vagina (wood, knitting needle)</li>
+                                    <li>Antiseptic solutions</li>
+                                </ul>
+                                
+                                <span class="badge badge-warning">Purgatives</span>
+                                <ul class="content-sublist">
+                                    <li>Castor oil</li>
+                                    <li>Croton oil</li>
+                                    <li>Jalap root</li>
+                                    <li>MgSO4</li>
+                                </ul>
+                                
+                                <span class="badge badge-warning">Metals</span>
+                                <ul class="content-sublist">
+                                    <li>Lead</li>
+                                    <li>Mercury</li>
+                                    <li>Arsenic (toxic)</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-5">
+            <div class="card-header">
+                <h2 class="card-title">Complications of Abortion</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-danger">Early</span>
+                        <ul class="content-list">
+                            <li>Neurogenic shock: parasympathetic (cervical dilatation), sympathetic (pain)</li>
+                            <li>Hemorrhage: primary & secondary (infection)</li>
+                            <li>Embolism: air, fat, amniotic fluid</li>
+                            <li>Acute poisoning</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-danger">Late</span>
+                        <ul class="content-list">
+                            <li>DVT (pelvic venous thrombosis)</li>
+                            <li>DIC</li>
+                            <li>Acute renal failure (shock → ischemia → tubular necrosis)</li>
+                            <li>Sepsis & septicemia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Diagnosis of Abortion</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-success">In Living</span>
+                        <ul class="content-list">
+                            <li>Written consent</li>
+                            <li>Confirm pregnancy signs</li>
+                            <li>General/systemic exam (look for violence, disease)</li>
+                            <li>Blood & urine: test for diseases</li>
+                            <li>Local exam: cervix (redness, bleeding, edema, lacerations, FB)</li>
+                            <li>Product exam: precipitin test</li>
+                            <li>Fetal age estimation (length, weight, ossification centers)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-success">In Dead</span>
+                        <ul class="content-list">
+                            <li>Examine clothes, vaginal contents</li>
+                            <li>Autopsy: peritonitis, ruptured uterus, air embolism (RT ventricle, skull)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Medical Reference Document - For Educational Purposes Only</p>
+            <p>© 2023 Healthcare Education</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle content visibility
+        function toggleContent(btn) {
+            const cardContent = btn.parentElement.nextElementSibling;
+            const icon = btn.querySelector('i');
+            
+            cardContent.classList.toggle('collapsed');
+            
+            if (cardContent.classList.contains('collapsed')) {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            } else {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            }
+        }
+
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                card.style.animationPlayState = 'paused';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

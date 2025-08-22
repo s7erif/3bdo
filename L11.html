@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morphine (Opiates & Opioids) - Summary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #7e57c2;
+            --secondary-color: #5e35b1;
+            --accent-color: #ff7043;
+            --light-color: #f5f5f5;
+            --dark-color: #263238;
+            --text-color: #37474f;
+            --card-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--text-color);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 16px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            animation: fadeIn 1s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 60%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .header-description {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            animation: slideUp 0.5s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .card-header i {
+            font-size: 28px;
+            margin-right: 15px;
+        }
+        
+        .card-header h2 {
+            font-size: 1.6rem;
+        }
+        
+        .card-content {
+            flex-grow: 1;
+        }
+        
+        .card-content ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+        
+        .card-content li {
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .card-content li:before {
+            content: "•";
+            position: absolute;
+            left: 10px;
+            color: var(--primary-color);
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(126, 87, 194, 0.1) 0%, rgba(94, 53, 177, 0.1) 100%);
+            border-left: 4px solid var(--primary-color);
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .warning-box {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+        }
+        
+        .warning-box h3 {
+            color: #ff6d00;
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .warning-box h3 i {
+            margin-right: 10px;
+        }
+        
+        .comparison-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .comparison-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+        }
+        
+        .comparison-card h2 {
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .comparison-card h2 i {
+            margin-right: 15px;
+        }
+        
+        .key-points {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+        }
+        
+        .key-points h2 {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .key-points h2 i {
+            margin-right: 15px;
+        }
+        
+        .key-points ul {
+            list-style-type: none;
+        }
+        
+        .key-points li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .key-points li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+        
+        .tab-container {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 40px;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #eee;
+        }
+        
+        .tab {
+            padding: 12px 24px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: var(--transition);
+            border-bottom: 3px solid transparent;
+        }
+        
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-section {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab {
+                margin-bottom: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Morphine (Opiates & Opioids)</h1>
+            <p class="subtitle">Complete Pharmacological and Toxicological Summary</p>
+            <div class="header-description">
+                <p>Comprehensive information on opiates, opioids, their mechanisms, clinical effects, and management of toxicity.</p>
+            </div>
+        </header>
+        
+        <div class="content-grid">
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-cannabis"></i>
+                    <h2>Opiates vs Opioids</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li><strong>Opiates:</strong> Natural alkaloids from opium</li>
+                        <li><strong>Opioids:</strong> Synthetic drugs with morphine-like action</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-seedling"></i>
+                    <h2>Source</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Opium poppy (Papaver somniferum)</li>
+                        <li>Contains ~20 compounds</li>
+                        <li>Morphine (10%), codeine (0.5%), papaverine, thebaine</li>
+                        <li>1000 g opium → 100 g morphine → 10 g heroin</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-pills"></i>
+                    <h2>Pharmacokinetics</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Well absorbed orally & parenterally</li>
+                        <li>Large volume of distribution (>5 L/kg)</li>
+                        <li>Metabolized mainly in liver (conjugation)</li>
+                        <li>Excretion: kidneys (detectable metabolites)</li>
+                        <li>Also excreted in milk, bile, saliva, stomach</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-cogs"></i>
+                    <h2>Mechanism of Action</h2>
+                </div>
+                <div class="card-content">
+                    <h3>Acts on opioid receptors:</h3>
+                    <ul>
+                        <li><strong>Mu:</strong> supraspinal analgesia, respiratory depression, euphoria, dependence</li>
+                        <li><strong>Delta:</strong> modulates Mu receptor action</li>
+                        <li><strong>Kappa:</strong> spinal analgesia, sedation, miosis</li>
+                        <li><strong>Sigma:</strong> vasomotor/respiratory stimulation, dysphoria</li>
+                    </ul>
+                    
+                    <h3>Effects:</h3>
+                    <ul>
+                        <li><strong>CNS:</strong> analgesia, sedation, euphoria, respiratory depression</li>
+                        <li><strong>GIT:</strong> ↓ motility, ↑ sphincter tone → constipation</li>
+                        <li><strong>Urinary tract:</strong> ↓ motility, ↑ sphincter tone → retention</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-heartbeat"></i>
+                    <h2>Therapeutic Uses</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Severe pain (MI, renal colic)</li>
+                        <li>Acute pulmonary edema (sedative, ↓ resistance)</li>
+                        <li>Treatment of opioid addiction</li>
+                        <li>Codeine (anti-cough), diphenoxylate (anti-diarrheal)</li>
+                        <li>Regional anesthesia, CVS surgery</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header">
+                    <i class="fas fa-flask"></i>
+                    <h2>Toxicology</h2>
+                </div>
+                <div class="card-content">
+                    <ul>
+                        <li>Mode: Accidental, rarely suicidal/homicidal</li>
+                        <li>Fatal dose: 2 g opium, 100 mg morphine (↑ tolerance in addicts)</li>
+                        <li>Fatal period: 6–12 h</li>
+                        <li>Cause of death: respiratory depression</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="highlight">
+            <h2><i class="fas fa-stethoscope"></i> Clinical Picture</h2>
+            <div class="comparison-section">
+                <div>
+                    <h3>CNS:</h3>
+                    <ul>
+                        <li>Early euphoria → dysphoria</li>
+                        <li>Restlessness → drowsiness, coma</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Respiration:</h3>
+                    <ul>
+                        <li>Slow stertorous breathing</li>
+                        <li>Later Cheyne–Stokes, apnea</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="comparison-section">
+                <div>
+                    <h3>CVS:</h3>
+                    <ul>
+                        <li>Slow full pulse</li>
+                        <li>Circulatory collapse</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Other:</h3>
+                    <ul>
+                        <li>Hypothermia, vomiting, cyanosis</li>
+                        <li>Pinpoint pupils (miosis)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Terminal:</h3>
+            <ul>
+                <li>Dilated fixed pupils</li>
+                <li>Death from respiratory failure</li>
+            </ul>
+        </div>
+        
+        <div class="tab-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="pupils">Pinpoint Pupils</div>
+                <div class="tab" data-tab="morphine-vs">Morphine vs Pontine Hemorrhage</div>
+                <div class="tab" data-tab="investigations">Investigations</div>
+            </div>
+            
+            <div class="tab-content active" id="pupils">
+                <h3>Differential Diagnosis of Pinpoint Pupils</h3>
+                <ul>
+                    <li>Organophosphorus poisoning</li>
+                    <li>Phenothiazines</li>
+                    <li>Pontine hemorrhage</li>
+                </ul>
+            </div>
+            
+            <div class="tab-content" id="morphine-vs">
+                <div class="comparison-section">
+                    <div>
+                        <h3>Morphine Poisoning:</h3>
+                        <ul>
+                            <li>Poisoning history</li>
+                            <li>Hypothermia</li>
+                            <li>Normal BP</li>
+                            <li>Sluggish reflexes</li>
+                            <li>No paralysis</li>
+                            <li>Naloxone positive</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3>Pontine Hemorrhage:</h3>
+                        <ul>
+                            <li>Head trauma/HTN</li>
+                            <li>Hyperthermia</li>
+                            <li>Hypertension</li>
+                            <li>Exaggerated reflexes</li>
+                            <li>Quadriplegia</li>
+                            <li>No naloxone effect</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="investigations">
+                <h3>Investigations</h3>
+                <ul>
+                    <li><strong>Routine:</strong> ABG, electrolytes</li>
+                    <li><strong>Specific:</strong> drug levels in blood/urine (detectable 3 days)</li>
+                    <li><strong>Chest X-ray:</strong> pulmonary edema</li>
+                    <li><strong>ECG:</strong> arrhythmias from hypoxia</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="warning-box">
+            <h3><i class="fas fa-first-aid"></i> Treatment</h3>
+            <ul>
+                <li><strong>Emergency:</strong> ABC (Airway, Breathing, Circulation)</li>
+                <li><strong>Decontamination:</strong> emesis, gastric lavage (even IV), MDAC, WBI (body packers)</li>
+                <li><strong>Specific antidotes:</strong>
+                    <ul>
+                        <li><strong>Naloxone:</strong> DOC, 0.1–0.4 mg IV, repeatable, duration 1–4 h, routes IM/SC/ET</li>
+                        <li><strong>Naltrexone:</strong> oral, 50 mg/day, long action (36–48 h), used in chronic cases</li>
+                        <li><strong>Nalmefene:</strong> 4x potency of naloxone, longer half-life, 0.25–1 mg IV</li>
+                        <li><strong>Agonist–antagonists (Nalorphine):</strong> obsolete</li>
+                    </ul>
+                </li>
+                <li><strong>Supportive:</strong> coma care, warming, treat shock</li>
+                <li>No effect in normal individuals, causes withdrawal in addicts, dramatic response in intoxication</li>
+            </ul>
+        </div>
+        
+        <div class="key-points">
+            <h2><i class="fas fa-key"></i> Key Points to Remember</h2>
+            <ul>
+                <li>Morphine acts on multiple opioid receptors with different effects</li>
+                <li>Respiratory depression is the primary cause of death in overdose</li>
+                <li>Pinpoint pupils are characteristic but not pathognomonic</li>
+                <li>Naloxone is the specific antidote with rapid reversal of effects</li>
+                <li>Tolerance develops in addicts, requiring higher fatal doses</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>Medical Information Summary | For educational purposes only</p>
+            <p>Always consult healthcare professionals for medical advice</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    const tabId = this.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Show relevant content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === tabId) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Add subtle animation to cards when they come into view
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = 'slideUp 0.5s ease forwards';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

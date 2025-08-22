@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asphyxia Summary - Medical Reference</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --accent: #e74c3c;
+            --light: #f5f7fa;
+            --dark: #2c3e50;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --success: #27ae60;
+            --info: #2980b9;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            animation: fadeIn 1s ease;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            animation: slideUp 0.5s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        .toggle-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .toggle-btn:hover {
+            background: var(--secondary);
+            transform: rotate(90deg);
+        }
+
+        .card-content {
+            overflow: hidden;
+            max-height: 1000px;
+            transition: max-height 0.5s ease;
+        }
+
+        .card-content.collapsed {
+            max-height: 0;
+        }
+
+        .definition-list {
+            list-style-type: none;
+        }
+
+        .definition-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        .definition-list li:last-child {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .badge-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+
+        .badge-success {
+            background-color: var(--success);
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: var(--warning);
+            color: white;
+        }
+
+        .badge-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .badge-info {
+            background-color: var(--info);
+            color: white;
+        }
+
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .three-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 992px) {
+            .three-column {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .two-column, .three-column {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .content-list {
+            list-style-type: none;
+        }
+
+        .content-list li {
+            padding: 0.75rem;
+            margin-bottom: 0.5rem;
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            border-radius: 4px;
+            transition: var(--transition);
+        }
+
+        .content-list li:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+
+        .content-sublist {
+            list-style-type: circle;
+            margin-left: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .highlight-box {
+            background-color: #ffeaa7;
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            border-radius: 4px;
+            margin: 1rem 0;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+            color: #777;
+            border-top: 1px solid #ddd;
+        }
+
+        .info-note {
+            background-color: #d6eaf8;
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            border-left: 4px solid var(--info);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animated {
+            animation-duration: 0.5s;
+            animation-fill-mode: both;
+        }
+
+        .fadeIn {
+            animation-name: fadeIn;
+        }
+
+        .slideUp {
+            animation-name: slideUp;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-5 {
+            animation-delay: 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header class="animated fadeIn">
+            <h1>Asphyxia - Summary</h1>
+            <p class="subtitle">Medical Reference Guide</p>
+        </header>
+
+        <div class="info-note">
+            <i class="fas fa-info-circle"></i> Asphyxia refers to conditions where there is inadequate oxygen supply to the body tissues.
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Definition</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Asphyxia is the lack of tissue oxygenation due to failure of the respiratory process.</p>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-1">
+            <div class="card-header">
+                <h2 class="card-title">Types of Asphyxia</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <div class="two-column">
+                    <div>
+                        <ul class="content-list">
+                            <li><span class="badge badge-primary">1</span> <strong>Pathological</strong>: diphtheria, bronchial asthma, tumors of air passages, pontine hemorrhage</li>
+                            <li><span class="badge badge-primary">2</span> <strong>Toxic</strong>: strychnine, oxalic acid, CO, CO2, H2S, morphine, barbiturates</li>
+                            <li><span class="badge badge-primary">3</span> <strong>Violent</strong>: throttling, strangulation, hanging, smothering, choking, traumatic asphyxia, drowning</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <ul class="content-list">
+                            <li><span class="badge badge-primary">4</span> <strong>Environmental</strong>: low oxygen at high altitude</li>
+                            <li><span class="badge badge-primary">5</span> <strong>Iatrogenic</strong>: medical errors, especially anesthesia</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-2">
+            <div class="card-header">
+                <h2 class="card-title">Stages of Asphyxia</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <div class="three-column">
+                    <div>
+                        <span class="badge badge-info">Stage 1</span>
+                        <h3>Dyspnea & Cyanosis</h3>
+                        <ul class="content-sublist">
+                            <li>Blue skin</li>
+                            <li>High blood pressure</li>
+                            <li>↑ CO2</li>
+                            <li>Dyspnea</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-warning">Stage 2</span>
+                        <h3>Coma & Convulsions</h3>
+                        <ul class="content-sublist">
+                            <li>Petechial hemorrhages (Tardieu spots)</li>
+                            <li>Ruptured alveoli (silver spots)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-danger">Stage 3</span>
+                        <h3>Irregular Respiration & Death</h3>
+                        <ul class="content-sublist">
+                            <li>Dilated pupils</li>
+                            <li>Low BP</li>
+                            <li>Cheyne-Stokes respiration</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-3">
+            <div class="card-header">
+                <h2 class="card-title">Postmortem Picture</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-secondary">External</span>
+                        <ul class="content-list">
+                            <li>Cyanosis</li>
+                            <li>Hypostasis</li>
+                            <li>Bulging eyes/tongue</li>
+                            <li>Subconjunctival hemorrhage</li>
+                            <li>Bloody froth</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-secondary">Internal</span>
+                        <ul class="content-list">
+                            <li>Congested organs</li>
+                            <li>Dark fluid blood</li>
+                            <li>Tardieu spots</li>
+                            <li>Silver spots</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-4">
+            <div class="card-header">
+                <h2 class="card-title">Smothering</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Obstruction of mouth/nose by hand or object.</p>
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-info">Types</span>
+                        <ul class="content-list">
+                            <li>Accidental (overlaying in infants)</li>
+                            <li>Suicidal</li>
+                            <li>Homicidal</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-info">Postmortem Findings</span>
+                        <ul class="content-list">
+                            <li>Abrasions around mouth/nose</li>
+                            <li>Petechiae</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp delay-5">
+            <div class="card-header">
+                <h2 class="card-title">Choking</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Foreign body obstruction of airways (e.g., seeds, coins, gases).</p>
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-danger">Cause of Death</span>
+                        <p>Airway obstruction</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-danger">Postmortem Findings</span>
+                        <p>Foreign body in airways</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Traumatic Asphyxia</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Compression of chest/abdomen by heavy weight (crowds, collapsed buildings).</p>
+                <span class="badge badge-info">Findings</span>
+                <ul class="content-list">
+                    <li>Cyanosis</li>
+                    <li>Petechiae</li>
+                    <li>Rib fractures</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Throttling</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Compression of neck by hands.</p>
+                <span class="badge badge-info">Postmortem Findings</span>
+                <ul class="content-list">
+                    <li>Nail abrasions</li>
+                    <li>Inward hyoid fracture</li>
+                    <li>Hemorrhage in neck muscles</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Strangulation</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Compression of neck by ligature tightened by hands.</p>
+                <span class="badge badge-info">Postmortem Findings</span>
+                <ul class="content-list">
+                    <li>Symmetrical transverse ligature mark</li>
+                    <li>Inward hyoid fracture</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Hanging</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Compression of neck by body weight via ligature.</p>
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-info">Types</span>
+                        <ul class="content-list">
+                            <li>Complete</li>
+                            <li>Incomplete</li>
+                            <li>Typical</li>
+                            <li>Atypical</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-info">Postmortem Findings</span>
+                        <ul class="content-list">
+                            <li>Asymmetrical ligature mark</li>
+                            <li>Outward hyoid fracture</li>
+                            <li>Saliva dribbling</li>
+                            <li>Hypostasis in legs</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card animated slideUp">
+            <div class="card-header">
+                <h2 class="card-title">Drowning</h2>
+                <button class="toggle-btn" onclick="toggleContent(this)">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+            <div class="card-content">
+                <p>Mechanical interference with breathing due to submersion.</p>
+                
+                <span class="badge badge-info">Stages</span>
+                <ul class="content-list">
+                    <li>Breath-holding</li>
+                    <li>Water inhalation</li>
+                    <li>Convulsions</li>
+                    <li>Death</li>
+                </ul>
+                
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-info">Types</span>
+                        <ul class="content-list">
+                            <li>Typical (water in lungs)</li>
+                            <li>Atypical (shock/trauma)</li>
+                            <li>Secondary (aspiration pneumonia)</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-info">Causes of Death</span>
+                        <ul class="content-list">
+                            <li>Airway obstruction</li>
+                            <li>Electrolyte imbalance</li>
+                            <li>Cardiac changes</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="two-column">
+                    <div>
+                        <span class="badge badge-info">Postmortem Signs - External</span>
+                        <ul class="content-list">
+                            <li>Froth</li>
+                            <li>Washerwoman skin</li>
+                            <li>Cutis anserina</li>
+                            <li>Glove & stocking appearance</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-info">Postmortem Signs - Internal</span>
+                        <ul class="content-list">
+                            <li>Frothy lungs</li>
+                            <li>Rib marks</li>
+                            <li>Tardieu spots</li>
+                            <li>Sand/mud in stomach</li>
+                            <li>Diatoms in tissues</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Medical Reference Document - For Educational Purposes Only</p>
+            <p>© 2023 Healthcare Education</p>
+        </footer>
+    </div>
+
+    <script>
+        // Toggle content visibility
+        function toggleContent(btn) {
+            const cardContent = btn.parentElement.nextElementSibling;
+            const icon = btn.querySelector('i');
+            
+            cardContent.classList.toggle('collapsed');
+            
+            if (cardContent.classList.contains('collapsed')) {
+                icon.classList.remove('fa-minus');
+                icon.classList.add('fa-plus');
+            } else {
+                icon.classList.remove('fa-plus');
+                icon.classList.add('fa-minus');
+            }
+        }
+
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                card.style.animationPlayState = 'paused';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

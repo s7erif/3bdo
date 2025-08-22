@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hydrocarbons (Kerosene) Toxicity</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .author {
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .content-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .nav-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-content {
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+        }
+        
+        .card-content.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .highlight {
+            background-color: rgba(44, 62, 80, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .danger {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .badge-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease;
+        }
+        
+        .slide-in {
+            animation: slideInLeft 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .content-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hydrocarbons (Kerosene) Toxicity</h1>
+            <p class="subtitle">Forensic Medicine and Toxicology</p>
+            <p class="author">By: Dr. Mostafa Asem<br>Lecturer of forensic medicine and toxicology</p>
+            
+            <div class="content-nav">
+                <button class="nav-btn active" onclick="showSection('intro')">
+                    <i class="fas fa-info-circle"></i> Introduction
+                </button>
+                <button class="nav-btn" onclick="showSection('mechanism')">
+                    <i class="fas fa-cogs"></i> Mechanism
+                </button>
+                <button class="nav-btn" onclick="showSection('poisoning')">
+                    <i class="fas fa-skull-crossbones"></i> Poisoning
+                </button>
+                <button class="nav-btn" onclick="showSection('clinical')">
+                    <i class="fas fa-stethoscope"></i> Clinical Picture
+                </button>
+                <button class="nav-btn" onclick="showSection('investigations')">
+                    <i class="fas fa-microscope"></i> Investigations
+                </button>
+                <button class="nav-btn" onclick="showSection('treatment')">
+                    <i class="fas fa-first-aid"></i> Treatment
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Introduction Section -->
+        <div class="content-section active" id="intro-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('intro-content')">
+                        <h2 class="card-title"><i class="fas fa-fire"></i> Introduction to Kerosene</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="intro-content">
+                        <ul>
+                            <li>Kerosene is a <span class="highlight">volatile hydrocarbon</span></li>
+                            <li><span class="highlight">Source</span>: Plant in origin, or from distillation of crude petroleum</li>
+                            <li>Commonly used as fuel for heating, lighting, and cooking</li>
+                            <li>Accidental ingestion is common in children</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mechanism of Action Section -->
+        <div class="content-section" id="mechanism-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('mechanism-content')">
+                        <h2 class="card-title"><i class="fas fa-cogs"></i> Mechanism of Action</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="mechanism-content">
+                        <div class="info">
+                            <h3><i class="fas fa-exclamation-circle"></i> Local Effects</h3>
+                            <p>Irritation of lung & intestine</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-exclamation-circle"></i> General Effects</h3>
+                            <ul>
+                                <li>CNS depression</li>
+                                <li>Sensitize myocardium to circulating catecholamine</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-lungs"></i> Effects of Kerosene Aspiration</h3>
+                            <ul>
+                                <li>Hyperemia, irritation, and inflammation in the oropharynx</li>
+                                <li>Bronchospasm, <span class="highlight">chemical pneumonitis</span></li>
+                                <li>Inhibit surfactant → alveolar collapse → <span class="highlight">hypoxia</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Poisoning Section -->
+        <div class="content-section" id="poisoning-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('poisoning-content')">
+                        <h2 class="card-title"><i class="fas fa-skull-crossbones"></i> Mode of Poisoning</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="poisoning-content">
+                        <ul>
+                            <li><span class="highlight">Mode of poisoning</span>: Accidentally, suicidal</li>
+                            <li><span class="highlight">Fatal dose</span>: >1 ml/kg, few drops in aspiration or inhalation</li>
+                            <li><span class="highlight">Fatal period</span>: 24 h</li>
+                        </ul>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Cause of Death</h3>
+                            <ul>
+                                <li><span class="highlight">Early</span>: inhibition of respiratory center, or heart failure & ventricular fibrillation</li>
+                                <li><span class="highlight">Late</span>: pneumonia</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Clinical Picture Section -->
+        <div class="content-section" id="clinical-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('clinical-content')">
+                        <h2 class="card-title"><i class="fas fa-stethoscope"></i> Clinical Picture</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="clinical-content">
+                        <div class="warning">
+                            <h3><i class="fas fa-stomach"></i> GIT Symptoms</h3>
+                            <p>Nausea, Vomiting, Diarrhea (smell of kerosene in the vomitus)</p>
+                        </div>
+                        
+                        <div class="warning">
+                            <h3><i class="fas fa-brain"></i> CNS Symptoms</h3>
+                            <p>Drowsiness, stupor, & coma. Central respiratory failure</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-lungs"></i> Lung Complications</h3>
+                            <p>Chemical pneumonitis:</p>
+                            <ul>
+                                <li>Bronchopneumonia with fever</li>
+                                <li>Tachypnea, Dyspnea, chest pain</li>
+                                <li>Pulmonary oedema</li>
+                                <li>Pneumothorax, pneumatocele, pleural effusion</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-heart"></i> Heart Complications</h3>
+                            <p>Ventricular Fibrillation (VF)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Investigations Section -->
+        <div class="content-section" id="investigations-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('investigations-content')">
+                        <h2 class="card-title"><i class="fas fa-microscope"></i> Investigations</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="investigations-content">
+                        <div class="info">
+                            <h3><i class="fas fa-vial"></i> Laboratory Tests</h3>
+                            <p>ABG, electrolytes, ECG, renal & liver functions</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-x-ray"></i> Radiology</h3>
+                            <p>Chest X-ray showing:</p>
+                            <ul>
+                                <li>Unilateral or bilateral basal infiltration</li>
+                                <li>Punctuate perihilar densities</li>
+                                <li>Pneumonitis, Pneumothorax, pneumatocele, pleural effusion</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Treatment Section -->
+        <div class="content-section" id="treatment-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('treatment-content')">
+                        <h2 class="card-title"><i class="fas fa-first-aid"></i> Treatment</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="treatment-content">
+                        <div class="info">
+                            <h3><i class="fas fa-bolt"></i> Emergency Management</h3>
+                            <p>A, B, C (Airway, Breathing, Circulation)</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-soap"></i> Decontamination</h3>
+                            <ul>
+                                <li><span class="highlight">Skin</span>: remove clothes; wash the skin with water & soap</li>
+                                <li><span class="highlight">GIT</span>:
+                                    <ul>
+                                        <li>Emesis: contraindication</li>
+                                        <li>Gastric lavage: contraindicated except in cases of co-ingestion using cuffed endotracheal tube</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning">
+                            <h3><i class="fas fa-pills"></i> Antidote</h3>
+                            <p>No specific antidote</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-medkit"></i> Symptomatic Treatment</h3>
+                            <ul>
+                                <li>Antibiotics for pneumonia</li>
+                                <li>Corticosteroids for chemical pneumonitis</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Hydrocarbons (Kerosene) Toxicity - Forensic Medicine and Toxicology</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle content visibility
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling.querySelector('.toggle-btn');
+            
+            content.classList.toggle('hidden');
+            
+            if (content.classList.contains('hidden')) {
+                button.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            } else {
+                button.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            }
+        }
+        
+        // Function to show selected section
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Add animation to elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.slide-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.visibility = 'visible';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animatedElements.forEach(element => {
+                element.style.visibility = 'hidden';
+                observer.observe(element);
+            });
+        });
+    </script>
+</body>
+</html>

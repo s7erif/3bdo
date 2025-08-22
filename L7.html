@@ -1,0 +1,914 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Organophosphorus Insecticides (OPI)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --toxic-green: #2ecc71;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 2rem;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 0 0 10px 10px;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .author {
+            margin-top: 1rem;
+            font-style: italic;
+        }
+        
+        .content-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+        
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+        
+        .nav-btn.active {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .nav-btn i {
+            margin-right: 0.5rem;
+        }
+        
+        .content-area {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            cursor: pointer;
+        }
+        
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-title i {
+            margin-right: 0.5rem;
+        }
+        
+        .toggle-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            color: var(--primary);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .card-content {
+            max-height: 1000px;
+            opacity: 1;
+            transition: max-height 0.5s ease, opacity 0.5s ease, padding 0.5s ease;
+        }
+        
+        .card-content.hidden {
+            max-height: 0;
+            opacity: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+        
+        li {
+            margin-bottom: 0.5rem;
+            position: relative;
+        }
+        
+        li::before {
+            content: "•";
+            color: var(--accent);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        th {
+            background-color: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        tr:hover {
+            background-color: #e9ecef;
+        }
+        
+        .highlight {
+            background-color: rgba(44, 62, 80, 0.1);
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        .danger {
+            background-color: rgba(231, 76, 60, 0.1);
+            color: var(--danger);
+            border-left: 4px solid var(--danger);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .warning {
+            background-color: rgba(243, 156, 18, 0.1);
+            color: var(--warning);
+            border-left: 4px solid var(--warning);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .info {
+            background-color: rgba(52, 152, 219, 0.1);
+            color: var(--secondary);
+            border-left: 4px solid var(--secondary);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .success {
+            background-color: rgba(46, 204, 113, 0.1);
+            color: var(--toxic-green);
+            border-left: 4px solid var(--toxic-green);
+            padding: 1rem;
+            margin: 1rem 0;
+            border-radius: 4px;
+        }
+        
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+        
+        .badge-accent {
+            background-color: var(--accent);
+            color: white;
+        }
+        
+        .comparison-table {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 1rem 0;
+        }
+        
+        .comparison-col {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .comparison-header {
+            text-align: center;
+            padding: 0.5rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            font-weight: bold;
+        }
+        
+        .op-header {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .carbamate-header {
+            background-color: var(--toxic-green);
+            color: white;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .animated {
+            animation: fadeIn 1s ease;
+        }
+        
+        .slide-in {
+            animation: slideInLeft 0.5s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .card-title {
+                font-size: 1.3rem;
+            }
+            
+            .content-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .nav-btn {
+                width: 200px;
+                justify-content: center;
+            }
+            
+            .comparison-table {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Organophosphorus Insecticides (OPI)</h1>
+            <p class="subtitle">Mechanism, Toxicity, and Treatment</p>
+            <p class="author">By: Dr. Mostafa M Asem<br>Lecturer of forensic medicine and toxicology</p>
+            
+            <div class="content-nav">
+                <button class="nav-btn active" onclick="showSection('mechanism')">
+                    <i class="fas fa-cogs"></i> Mechanism
+                </button>
+                <button class="nav-btn" onclick="showSection('poisoning')">
+                    <i class="fas fa-skull-crossbones"></i> Poisoning
+                </button>
+                <button class="nav-btn" onclick="showSection('symptoms')">
+                    <i class="fas fa-stethoscope"></i> Symptoms
+                </button>
+                <button class="nav-btn" onclick="showSection('syndromes')">
+                    <i class="fas fa-brain"></i> Syndromes
+                </button>
+                <button class="nav-btn" onclick="showSection('investigations')">
+                    <i class="fas fa-microscope"></i> Investigations
+                </button>
+                <button class="nav-btn" onclick="showSection('treatment')">
+                    <i class="fas fa-first-aid"></i> Treatment
+                </button>
+                <button class="nav-btn" onclick="showSection('comparison')">
+                    <i class="fas fa-not-equal"></i> OPI vs Carbamates
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <div class="container">
+        <!-- Mechanism Section -->
+        <div class="content-section active" id="mechanism-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('mechanism-content')">
+                        <h2 class="card-title"><i class="fas fa-cogs"></i> Mechanism of Toxicity</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="mechanism-content">
+                        <ul>
+                            <li>Organophosphate compounds bind to cholinesterase transforming them into enzymatically inert proteins, thus acting as <span class="highlight">irreversible cholinesterase inhibitors</span></li>
+                            <li>Inhibition of cholinesterase activity leads to the accumulation of acetylcholine at synapses, causing overstimulation and subsequent disruption of transmission in both the central and peripheral nervous systems</li>
+                            <li>Inhibition of the enzyme initially by <span class="highlight">ionic bonding</span>, then the enzyme is progressively phosphorylated by <span class="highlight">covalent bond</span> which may take 24-48h and called "<span class="highlight">aging</span>" and this period is called "<span class="highlight">critical interval</span>" during this period, the administration of antidote is effective in reversing this process</li>
+                            <li>Once aging occurs, antidote is not effective and enzyme re-synthesis is the only way to restore the enzyme activity that needs several weeks <span class="highlight">(120 days)</span></li>
+                        </ul>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-lightbulb"></i> Key Points</h3>
+                            <p>The "critical interval" of 24-48 hours is the window for effective antidote administration before aging occurs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Poisoning Section -->
+        <div class="content-section" id="poisoning-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('poisoning-content')">
+                        <h2 class="card-title"><i class="fas fa-skull-crossbones"></i> Mode of Poisoning</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="poisoning-content">
+                        <div class="danger">
+                            <h3><i class="fas fa-exclamation-triangle"></i> Modes of Poisoning</h3>
+                            <ul>
+                                <li><span class="highlight">Suicidal:</span> Very common in Egyptian population</li>
+                                <li><span class="highlight">Accidental:</span> Common in agriculture or home</li>
+                                <li><span class="highlight">Homicidal:</span> Not common when the insecticide is mixed with food or drinks</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning">
+                            <h3><i class="fas fa-vial"></i> Fatal Dose & Period</h3>
+                            <ul>
+                                <li><span class="highlight">Fatal dose:</span> Usually ranges from 0.5 - 300mg/kg</li>
+                                <li><span class="highlight">Fatal period:</span> 2-12h</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-heartbeat"></i> Cause of Death</h3>
+                            <p>Respiratory failure due to:</p>
+                            <ul>
+                                <li><span class="highlight">Central:</span> depression of respiratory center</li>
+                                <li><span class="highlight">Peripheral:</span>
+                                    <ul>
+                                        <li>Muscarinic: increased bronchial secretions, bronchospasm</li>
+                                        <li>Nicotinic: Respiratory muscle paralysis</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Symptoms Section -->
+        <div class="content-section" id="symptoms-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('symptoms-content')">
+                        <h2 class="card-title"><i class="fas fa-stethoscope"></i> Clinical Presentation</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="symptoms-content">
+                        <div class="comparison-table">
+                            <div class="comparison-col">
+                                <div class="comparison-header op-header">Central (3CD)</div>
+                                <ul>
+                                    <li>Confusion</li>
+                                    <li>Convulsion</li>
+                                    <li>Coma</li>
+                                    <li>Depression of respiratory center</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="comparison-col">
+                                <div class="comparison-header op-header">Muscarinic (DUMBBLES)</div>
+                                <ul>
+                                    <li>Diarrhea</li>
+                                    <li>Urinary incontinence</li>
+                                    <li>Miosis</li>
+                                    <li>Bronchospasm</li>
+                                    <li>Bronchorrhea</li>
+                                    <li>Emesis</li>
+                                    <li>Salivation, Lacrimation</li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div class="comparison-table">
+                            <div class="comparison-col">
+                                <div class="comparison-header op-header">Nicotinic (MATCH)</div>
+                                <ul>
+                                    <li>Muscle weakness & fasciculations</li>
+                                    <li>Adrenal medulla activity increased</li>
+                                    <li>Tachycardia</li>
+                                    <li>Cramping of skeletal muscles</li>
+                                    <li>Hypertension</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="comparison-col">
+                                <div class="comparison-header op-header">Other Findings</div>
+                                <ul>
+                                    <li>Chemical pneumonitis if a product containing a hydrocarbon solvent is aspirated into the lungs</li>
+                                    <li>Garlic like odour in the breath/vomit/clothes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Syndromes Section -->
+        <div class="content-section" id="syndromes-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('intermediate-syndrome-content')">
+                        <h2 class="card-title"><i class="fas fa-brain"></i> Intermediate Syndrome</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="intermediate-syndrome-content">
+                        <div class="warning">
+                            <h3><i class="fas fa-clock"></i> Timing</h3>
+                            <p>Usually presents 12 to 96 hours after exposure</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-exclamation-circle"></i> Manifestations</h3>
+                            <p><span class="highlight">Early:</span> Tremors and Pharyngeal weakness (pooling of secretions in pharynx)</p>
+                            <p><span class="highlight">Later:</span></p>
+                            <ul>
+                                <li>Inability to flex neck</li>
+                                <li>Deep tendon jerks are lost</li>
+                                <li>Cranial neuropathies</li>
+                                <li>Proximal muscle weakness</li>
+                                <li>Respiratory muscle paralysis</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-cogs"></i> Pathophysiology</h3>
+                            <p>May be combined pre- and post-synaptic dysfunction of neuromuscular transmission</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-pills"></i> Associated Compounds & Treatment</h3>
+                            <p>More common with methyl parathion and dimethoate. Treatment is mainly supportive.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card animated" style="animation-delay: 0.2s;">
+                    <div class="card-header" onclick="toggleContent('delayed-neuropathy-content')">
+                        <h2 class="card-title"><i class="fas fa-brain"></i> Delayed Peripheral Neuropathy</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="delayed-neuropathy-content">
+                        <div class="warning">
+                            <h3><i class="fas fa-clock"></i> Timing</h3>
+                            <p>Occurs within 1-2 weeks. It may be irreversible.</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-exclamation-circle"></i> Clinical Course</h3>
+                            <p>The neuropathy begins with paresthesia and pain or cramping in the calves followed by ataxia, weakness and toe drop.</p>
+                            <p>The disease may progress for 2-3 months and muscle wasting occurs.</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-cogs"></i> Pathophysiology</h3>
+                            <p>Damage to the afferent fibers of peripheral and central nerves and associated with inhibition of "neuropathy target esterase" (NTE)</p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-times-circle"></i> Treatment</h3>
+                            <p>Treatment is difficult & no role of antidote</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Investigations Section -->
+        <div class="content-section" id="investigations-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('investigations-content')">
+                        <h2 class="card-title"><i class="fas fa-microscope"></i> Investigations</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="investigations-content">
+                        <div class="info">
+                            <h3><i class="fas fa-vial"></i> General Laboratory Investigations</h3>
+                            <ul>
+                                <li><span class="highlight">CBC:</span> Neutrophil leukocytosis</li>
+                                <li><span class="highlight">Electrolytes:</span> Hypokalemia</li>
+                                <li><span class="highlight">Blood glucose level:</span> Hyperglycemia</li>
+                                <li><span class="highlight">Urine analysis:</span> Proteinuria and Glycosuria</li>
+                                <li><span class="highlight">Serum amylase:</span> Elevated serum amylase 2ry to pancreatic injury by parasympathetic overstimulation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-flask"></i> Toxin Specific Investigations</h3>
+                            <ul>
+                                <li>Assay of blood and urine for specific agents (not widely available)</li>
+                                <li>Measurement of acetylcholine esterase level:
+                                    <ul>
+                                        <li>True acetyl cholinesterase is more specific</li>
+                                        <li>Pseudocholinesterase is more sensitive of exposure (25% depression in its level is an indicator of poisoning)</li>
+                                        <li>True cholinesterase takes 90-120 days to return to normal values</li>
+                                        <li>Pseudocholinesterase takes days to weeks to return to normal</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card animated" style="animation-delay: 0.2s;">
+                    <div class="card-header" onclick="toggleContent('cholinesterase-content')">
+                        <h2 class="card-title"><i class="fas fa-vial"></i> Cholinesterase Depression</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="cholinesterase-content">
+                        <div class="comparison-table">
+                            <div class="comparison-col">
+                                <div class="comparison-header op-header">Pseudocholinesterase Depression</div>
+                                <ul>
+                                    <li>Parenchymal liver diseases (hepatitis, cirrhosis, cancer...)</li>
+                                    <li>Malnutrition</li>
+                                    <li>Early pregnancy, oral contraception</li>
+                                    <li>Acute infections</li>
+                                    <li>Chronic alcoholism</li>
+                                    <li>Cocaine and metoclopramide</li>
+                                    <li>Genetically in 3% of normal persons (vulnerable to the action of the muscle-paralyzing drug succinylcholine)</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="comparison-col">
+                                <div class="comparison-header op-header">True Cholinesterase Depression</div>
+                                <ul>
+                                    <li>Hemolytic anemia</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Treatment Section -->
+        <div class="content-section" id="treatment-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('treatment-content')">
+                        <h2 class="card-title"><i class="fas fa-first-aid"></i> Treatment Overview</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="treatment-content">
+                        <ol>
+                            <li><span class="highlight">Preventive</span> measures</li>
+                            <li><span class="highlight">1st aid</span> measures</li>
+                            <li><span class="highlight">Decontamination</span>
+                                <ul>
+                                    <li>GIT: emesis, gastric wash, cathartics. AC (Controverse)</li>
+                                    <li>Dermal: wash by water and soap</li>
+                                </ul>
+                            </li>
+                            <li><span class="highlight">Antidotes</span></li>
+                            <li><span class="highlight">Supportive and symptomatic</span> treatment</li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="card animated" style="animation-delay: 0.2s;">
+                    <div class="card-header" onclick="toggleContent('atropine-content')">
+                        <h2 class="card-title"><i class="fas fa-syringe"></i> Atropine Therapy</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="atropine-content">
+                        <div class="info">
+                            <h3><i class="fas fa-info-circle"></i> Mechanism & Effects</h3>
+                            <ul>
+                                <li>It treats both muscarinic and central effects</li>
+                                <li>It has no role on nicotinic sites (NMJ & adrenal medulla)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="warning">
+                            <h3><i class="fas fa-vial"></i> Atropine Test</h3>
+                            <p>If you are not sure if the patient has consumed OP, inject 1 mg IV atropine. If pulse rate goes up by 25 per minute or skin flushing develops, patient has mild or no toxicity.</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-syringe"></i> Bolus Dose Administration</h3>
+                            <p>Defined as (5 mg of atropine every 15 minutes) followed by maintenance using reduced doses or increasing the time duration in between the doses till full <span class="highlight">atropinization</span>.</p>
+                            <p>Then slowly withdrawal.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card animated" style="animation-delay: 0.4s;">
+                    <div class="card-header" onclick="toggleContent('oximes-content')">
+                        <h2 class="card-title"><i class="fas fa-syringe"></i> Oximes (Specific Antidotes)</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="oximes-content">
+                        <div class="info">
+                            <h3><i class="fas fa-pills"></i> Examples</h3>
+                            <p>Pralidoxime (protopam), Obidoxime (toxogonin)</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-cogs"></i> Mechanism of Action</h3>
+                            <p>Oximes attach to the free anionic site of the enzyme ChE. The oxime end then reacts with the phosphorus atom of OP attached at the esteratic site of the enzyme. <span class="highlight">This formed oxime phosphate complex diffuses away leaving the enzyme intact (Reactivated ChE).</span></p>
+                        </div>
+                        
+                        <div class="danger">
+                            <h3><i class="fas fa-clock"></i> Timing is Critical</h3>
+                            <p>It <span class="highlight">must be given in the first 24-48h post-exposure</span> (critical period) {before aging of the enzyme}.</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-syringe"></i> Dose</h3>
+                            <ul>
+                                <li><span class="highlight">Bolus dose:</span> 250 mg over 30 minutes</li>
+                                <li><span class="highlight">Maintenance dose:</span> continuous infusion of 750 mg/24 hour</li>
+                            </ul>
+                            <p class="warning">A fast infusion can cause vomiting, hypertension, cardiac arrhythmia or cardiac arrest.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Comparison Section -->
+        <div class="content-section" id="comparison-section">
+            <div class="grid">
+                <div class="card animated">
+                    <div class="card-header" onclick="toggleContent('comparison-content')">
+                        <h2 class="card-title"><i class="fas fa-not-equal"></i> OPI vs Carbamates</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="comparison-content">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Feature</th>
+                                    <th>Organophosphate</th>
+                                    <th>Carbamates</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>Mechanism of action</strong></td>
+                                    <td>Irreversible inhibition of acetylcholine choline estrase (damage of enzyme). Dissociate slowly.</td>
+                                    <td>Reversible inhibition. Dissociate readily.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Kinetics</strong></td>
+                                    <td>Penetrate CNS. Longer duration.</td>
+                                    <td>Poorly penetrate CNS. Shorter duration.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Symptoms & signs</strong></td>
+                                    <td>Late onset. Severe & prolonged. Prominent CNS effects.</td>
+                                    <td>Quick onset. Mild & short. Less prominent.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Diagnosis</strong></td>
+                                    <td>Serum & RBCs A.ch.E levels are more reliable. Depend on lab findings.</td>
+                                    <td>Less reliable. Depends on clinical findings.</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Treatment</strong></td>
+                                    <td>Atropine, Pralidoxime</td>
+                                    <td>Atropine, No Pralidoxime</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card animated" style="animation-delay: 0.2s;">
+                    <div class="card-header" onclick="toggleContent('carbamates-content')">
+                        <h2 class="card-title"><i class="fas fa-info-circle"></i> Carbamate Insecticides</h2>
+                        <button class="toggle-btn"><i class="fas fa-chevron-down"></i></button>
+                    </div>
+                    <div class="card-content" id="carbamates-content">
+                        <div class="info">
+                            <h3><i class="fas fa-vial"></i> Introduction</h3>
+                            <p>They are group of insecticides derived from carbamic acid.</p>
+                        </div>
+                        
+                        <div class="info">
+                            <h3><i class="fas fa-cogs"></i> Mechanism of Toxicity</h3>
+                            <p>Like organophosphorus compounds, they are cholinesterase inhibitors by carbamylation of acetyl cholinesterase enzyme leading to accumulation of acetylcholine at cholinergic nerve endings.</p>
+                            <p>However, the carbamate insecticides differ from organophosphates in being "reversible inhibitors" of cholinesterase thus they are of more benign toxicity than organophosphate and of short duration of action.</p>
+                            <p>Also, they poorly penetrate CNS thus, central effects are less prominent.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>Organophosphorus Insecticides (OPI) - Medical Summary</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to toggle content visibility
+        function toggleContent(id) {
+            const content = document.getElementById(id);
+            const button = content.previousElementSibling.querySelector('.toggle-btn');
+            
+            content.classList.toggle('hidden');
+            
+            if (content.classList.contains('hidden')) {
+                button.innerHTML = '<i class="fas fa-chevron-down"></i>';
+            } else {
+                button.innerHTML = '<i class="fas fa-chevron-up"></i>';
+            }
+        }
+        
+        // Function to show selected section
+        function showSection(section) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(`${section}-section`).classList.add('active');
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const cards = document.querySelectorAll('.card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animationPlayState = 'running';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            cards.forEach(card => {
+                card.style.animationPlayState = 'paused';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

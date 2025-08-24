@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alcohol Toxicity Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            margin: 0 10px 10px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: slideUp 0.5s ease;
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+        }
+        
+        .card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .severity-box {
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .mild {
+            background: var(--success);
+        }
+        
+        .moderate {
+            background: var(--warning);
+        }
+        
+        .severe {
+            background: var(--danger);
+        }
+        
+        .list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .list li::before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+            
+            .grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Alcohol Toxicity Summary</h1>
+            <p>Comprehensive guide to acute and chronic ethanol toxicity</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-target="acute">Acute Toxicity</button>
+            <button class="tab-btn" data-target="chronic">Chronic Toxicity</button>
+            <button class="tab-btn" data-target="treatment">Treatment</button>
+            <button class="tab-btn" data-target="withdrawal">Withdrawal Syndrome</button>
+        </div>
+        
+        <section id="acute" class="content-section active">
+            <h2>Acute Ethanol Toxicity</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>Sources</h3>
+                    <p>Alcoholic beverages, household preparations, medications.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Absorption</h3>
+                    <p>80% from small intestine, 20% from mouth & stomach.</p>
+                </div>
+                
+                <div class="card">
+                    <h3>Metabolism</h3>
+                    <p>80-90% in the liver, 10-20% excreted unchanged by kidney & lung.</p>
+                </div>
+            </div>
+            
+            <h3>Fatal Dose & Period</h3>
+            <div class="card">
+                <p><span class="highlight">Fatal dose:</span> 150 ml pure alcohol or 400-800 ml diluted.</p>
+                <p><span class="highlight">Fatal period:</span> 1–10 hours (death due to central asphyxia).</p>
+            </div>
+            
+            <h3>Factors Affecting Toxicity</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>Tolerance</li>
+                    <li>Fasting</li>
+                    <li>Sex (higher in females)</li>
+                    <li>Age</li>
+                    <li>Liver disease</li>
+                    <li>Smoking</li>
+                </ul>
+            </div>
+            
+            <h3>Clinical Picture</h3>
+            
+            <div class="severity-box mild">
+                <h3>Mild (150 mg/dl)</h3>
+                <ul class="list">
+                    <li>Euphoria</li>
+                    <li>Behavioral disturbance</li>
+                    <li>Incoordination</li>
+                    <li>Vomiting</li>
+                    <li>Alcoholic smell</li>
+                    <li>Flush</li>
+                </ul>
+            </div>
+            
+            <div class="severity-box moderate">
+                <h3>Moderate (150–300 mg/dl)</h3>
+                <ul class="list">
+                    <li>Hypotension</li>
+                    <li>Weak pulse</li>
+                    <li>Shallow respiration</li>
+                    <li>Cold clammy skin</li>
+                    <li>Shock</li>
+                    <li>Coma</li>
+                    <li>Convulsions</li>
+                </ul>
+            </div>
+            
+            <div class="severity-box severe">
+                <h3>Severe (>300 mg/dl)</h3>
+                <ul class="list">
+                    <li>Coma</li>
+                    <li>Respiratory failure</li>
+                    <li>Convulsions</li>
+                    <li>McEwen's pupil (constricted pupil dilating on cheek pinch)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="chronic" class="content-section">
+            <h2>Chronic Ethanol Toxicity</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>General Effects</h3>
+                    <ul class="list">
+                        <li>Recurrent infections</li>
+                        <li>Anorexia</li>
+                        <li>Weight loss</li>
+                        <li>Red nose</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>GIT Effects</h3>
+                    <ul class="list">
+                        <li>Inflammation</li>
+                        <li>Cirrhosis</li>
+                        <li>Peptic ulcer</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>CNS Effects</h3>
+                    <ul class="list">
+                        <li>Peripheral neuritis</li>
+                        <li>Tremors</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3>Mental Effects</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>Dipsomania</li>
+                    <li>Dementia</li>
+                    <li>Delusions & hallucinations</li>
+                </ul>
+            </div>
+            
+            <h3>Complications</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>Lactic acidosis</li>
+                    <li>Teratogenicity</li>
+                </ul>
+            </div>
+            
+            <h3>Special Syndromes</h3>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>Wernicke's Encephalopathy</h3>
+                    <p>Due to thiamine deficiency</p>
+                    <ul class="list">
+                        <li>Mental disturbances</li>
+                        <li>Ataxia</li>
+                        <li>Diplopia</li>
+                        <li>Nystagmus</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Korsakoff Psychosis</h3>
+                    <p>Amnesia (not reversible with thiamine)</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="treatment" class="content-section">
+            <h2>Treatment Approaches</h2>
+            
+            <h3>Acute Toxicity Treatment</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>ABC (Airway, Breathing, Circulation)</li>
+                    <li>Gastric lavage with airway protection</li>
+                    <li>No specific antidote</li>
+                    <li>Haemodialysis in severe cases</li>
+                    <li>Supportive therapy (fluids, NaHCO3 for acidosis, folic acid, warming)</li>
+                </ul>
+            </div>
+            
+            <h3>Chronic Toxicity Treatment</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>Psychological & social therapy</li>
+                    <li>Multivitamins (thiamine)</li>
+                    <li>IV benzodiazepines for withdrawal</li>
+                    <li>Disulfiram for long-term recovery (contraindicated in acute intoxication)</li>
+                </ul>
+            </div>
+        </section>
+        
+        <section id="withdrawal" class="content-section">
+            <h2>Withdrawal Syndrome</h2>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>Minor (6–8h)</h3>
+                    <ul class="list">
+                        <li>Tremors</li>
+                        <li>Anxiety</li>
+                        <li>Sweating</li>
+                        <li>Nausea</li>
+                        <li>Sleep disturbance</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Moderate (24–36h)</h3>
+                    <ul class="list">
+                        <li>Hallucinations (visual, auditory, olfactory)</li>
+                        <li>Fever</li>
+                        <li>Seizures</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3>Severe (48–72h)</h3>
+                    <ul class="list">
+                        <li>Delirium tremens</li>
+                        <li>Agitation</li>
+                        <li>Disorientation</li>
+                        <li>Fever</li>
+                        <li>↑ Heart Rate</li>
+                        <li>↑ Blood Pressure</li>
+                        <li>↑ Respiratory Rate</li>
+                        <li>Mortality ~15%</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Alcohol Toxicity Summary - Medical Reference</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = button.getAttribute('data-target');
+                    
+                    // Update active tab
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Show target section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === target) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Add subtle animations to cards on page load
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

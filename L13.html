@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salicylate Toxicity Summary</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c3e50;
+            --secondary: #3498db;
+            --accent: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --success: #2ecc71;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --purple: #9b59b6;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease;
+        }
+        
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .tab-btn {
+            padding: 12px 24px;
+            background: white;
+            border: none;
+            border-radius: 30px;
+            margin: 0 10px 10px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--dark);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tab-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+        
+        .tab-btn.active {
+            background: var(--secondary);
+            color: white;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            animation: slideUp 0.5s ease;
+            display: none;
+        }
+        
+        .content-section.active {
+            display: block;
+        }
+        
+        h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--light);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        h3 {
+            color: var(--secondary);
+            margin: 20px 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .card {
+            background: var(--light);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary);
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .severity-box {
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .mild {
+            background: var(--success);
+        }
+        
+        .moderate {
+            background: var(--warning);
+        }
+        
+        .severe {
+            background: var(--danger);
+        }
+        
+        .list {
+            list-style-type: none;
+            padding-left: 20px;
+        }
+        
+        .list li {
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .list li::before {
+            content: '•';
+            color: var(--secondary);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        .btn:hover {
+            background: var(--primary);
+            transform: translateY(-2px);
+        }
+        
+        .pharmacokinetics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .pharmaco-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--purple);
+        }
+        
+        .patho-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .patho-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .patho-card h4 {
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+        
+        .toxicity-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .toxicity-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--warning);
+        }
+        
+        .acid-base-card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            margin: 20px 0;
+            border: 2px dashed var(--secondary);
+        }
+        
+        .treatment-steps {
+            counter-reset: step-counter;
+        }
+        
+        .treatment-step {
+            margin-bottom: 20px;
+            padding-left: 60px;
+            position: relative;
+        }
+        
+        .treatment-step::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes slideUp {
+            from { 
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+        
+        .warning-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            color: var(--dark);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        @media (max-width: 768px) {
+            .tabs {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .tab-btn {
+                width: 80%;
+                margin-bottom: 10px;
+            }
+            
+            .grid, .pharmacokinetics-grid, .patho-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .toxicity-info {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Salicylate Toxicity Summary</h1>
+            <p>Comprehensive guide to salicylate toxicity and management</p>
+        </header>
+        
+        <div class="tabs">
+            <button class="tab-btn active" data-target="general">
+                <i class="fas fa-info-circle"></i> General
+            </button>
+            <button class="tab-btn" data-target="pharmaco">
+                <i class="fas fa-pills"></i> Pharmacokinetics
+            </button>
+            <button class="tab-btn" data-target="patho">
+                <i class="fas fa-heartbeat"></i> Pathophysiology
+            </button>
+            <button class="tab-btn" data-target="clinical">
+                <i class="fas fa-stethoscope"></i> Clinical Picture
+            </button>
+            <button class="tab-btn" data-target="treatment">
+                <i class="fas fa-first-aid"></i> Treatment
+            </button>
+        </div>
+        
+        <section id="general" class="content-section active">
+            <h2><i class="fas fa-info-circle"></i> General Information</h2>
+            
+            <div class="card">
+                <p>Salicylates are weak acids, widely used (over 200 compounds).</p>
+            </div>
+            
+            <h3><i class="fas fa-list"></i> Common Forms</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>Acetylsalicylic Acid (ASA)</h4>
+                    <p>Commonly known as aspirin, used for pain relief and anti-inflammatory purposes.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Methyl Salicylate</h4>
+                    <p>Very toxic topically, found in liniments and topical pain relief products.</p>
+                </div>
+                
+                <div class="card">
+                    <h4>Salicylic Acid</h4>
+                    <p>Primarily used for wart removal and skin exfoliation.</p>
+                </div>
+            </div>
+            
+            <div class="warning-box">
+                <i class="fas fa-exclamation-triangle"></i>
+                <strong>Warning:</strong> Methyl salicylate is highly toxic when applied topically, especially in large amounts.
+            </div>
+        </section>
+        
+        <section id="pharmaco" class="content-section">
+            <h2><i class="fas fa-pills"></i> Pharmacokinetics</h2>
+            
+            <div class="pharmacokinetics-grid">
+                <div class="pharmaco-card">
+                    <h3><i class="fas fa-arrow-down"></i> Absorption</h3>
+                    <p>Rapid absorption in the jejunum. Delayed in toxic doses due to pylorospasm and concretions.</p>
+                </div>
+                
+                <div class="pharmaco-card">
+                    <h3><i class="fas fa-exchange-alt"></i> Distribution</h3>
+                    <p>Low volume of distribution (0.2–0.5 L/kg). Crosses blood-brain barrier more easily in acidic pH.</p>
+                </div>
+                
+                <div class="pharmaco-card">
+                    <h3><i class="fas fa-cogs"></i> Metabolism</h3>
+                    <p>Liver conjugation. Half-life: 3–5h (therapeutic), 15h (toxic).</p>
+                </div>
+                
+                <div class="pharmaco-card">
+                    <h3><i class="fas fa-toilet"></i> Excretion</h3>
+                    <p>Mainly renal excretion.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section id="patho" class="content-section">
+            <h2><i class="fas fa-heartbeat"></i> Pathophysiology</h2>
+            <h3>Mechanism of Toxicity</h3>
+            
+            <div class="patho-grid">
+                <div class="patho-card">
+                    <h4><i class="fas fa-brain"></i> CNS</h4>
+                    <p>Stimulation → depression → cerebral edema</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-ear"></i> Ear</h4>
+                    <p>Tinnitus, hearing loss</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-lungs"></i> Respiratory</h4>
+                    <p>Hyperpnea → failure, pulmonary edema</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-heart"></i> CVS</h4>
+                    <p>Hypotension</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-stomach"></i> GIT</h4>
+                    <p>Nausea/vomiting, hemorrhage, hepatitis-like syndrome</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-kidneys"></i> Renal</h4>
+                    <p>Impairment due to decreased prostaglandins</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-tint"></i> Blood</h4>
+                    <p>Decreased coagulation factors (II, V, VII, IX), platelet dysfunction</p>
+                </div>
+                
+                <div class="patho-card">
+                    <h4><i class="fas fa-bolt"></i> Metabolic</h4>
+                    <p>Uncoupling oxidative phosphorylation, hyper→hypoglycemia, dehydration, hypokalemia</p>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-vial"></i> Acid-Base Disturbance</h3>
+            <div class="acid-base-card">
+                <p>Respiratory alkalosis + metabolic acidosis</p>
+            </div>
+        </section>
+        
+        <section id="clinical" class="content-section">
+            <h2><i class="fas fa-stethoscope"></i> Clinical Picture</h2>
+            
+            <h3><i class="fas fa-exclamation-circle"></i> Earliest Symptoms</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>Nausea</li>
+                    <li>Vomiting</li>
+                    <li>Sweating</li>
+                    <li>Tinnitus</li>
+                </ul>
+            </div>
+            
+            <h3><i class="fas fa-procedures"></i> System-Based Manifestations</h3>
+            <div class="grid">
+                <div class="card">
+                    <h4>GIT/Liver</h4>
+                    <ul class="list">
+                        <li>Nausea/vomiting</li>
+                        <li>Bleeding</li>
+                        <li>Rye's syndrome (hypoglycemia, elevated liver enzymes)</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>CVS</h4>
+                    <ul class="list">
+                        <li>Hypotension</li>
+                        <li>Pulmonary edema</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>CNS</h4>
+                    <ul class="list">
+                        <li>Agitation, headache</li>
+                        <li>Confusion, coma</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Respiratory</h4>
+                    <ul class="list">
+                        <li>Hyperpnea</li>
+                        <li>Pulmonary edema</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Blood</h4>
+                    <ul class="list">
+                        <li>Prolonged PT</li>
+                        <li>Platelet dysfunction</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Metabolic</h4>
+                    <ul class="list">
+                        <li>Hyper/hypoglycemia</li>
+                        <li>Hypokalemia</li>
+                        <li>Dehydration</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Allergy</h4>
+                    <ul class="list">
+                        <li>Asthma</li>
+                        <li>Urticaria</li>
+                        <li>Anaphylaxis</li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h4>Renal</h4>
+                    <ul class="list">
+                        <li>Tubular necrosis</li>
+                        <li>Uremia</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-skull"></i> Toxicity Information</h3>
+            <div class="toxicity-info">
+                <div class="toxicity-card">
+                    <h4>Fatal Dose</h4>
+                    <p>~300 mg/kg (~60–70 tablets)</p>
+                </div>
+                
+                <div class="toxicity-card">
+                    <h4>Fatal Period</h4>
+                    <p>Within 24 hours</p>
+                </div>
+                
+                <div class="toxicity-card">
+                    <h4>Cause of Death</h4>
+                    <p>Early: respiratory failure, arrhythmia</p>
+                    <p>Late: renal failure, hemorrhage</p>
+                </div>
+                
+                <div class="toxicity-card">
+                    <h4>Mode</h4>
+                    <p>Mainly suicidal</p>
+                    <p>Accidental (children)</p>
+                    <p>Homicidal (rare)</p>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-vial"></i> Acid-Base Disturbances</h3>
+            <div class="card">
+                <p>Respiratory alkalosis (hyperventilation) → metabolic acidosis (↑ organic acids, renal impairment, ketoacidosis).</p>
+                <p>Children present earlier with metabolic acidosis.</p>
+                <p>Severe dose may cause respiratory acidosis (hypoventilation).</p>
+            </div>
+        </section>
+        
+        <section id="treatment" class="content-section">
+            <h2><i class="fas fa-first-aid"></i> Treatment</h2>
+            
+            <div class="treatment-steps">
+                <div class="treatment-step">
+                    <h3>Emergency Management</h3>
+                    <p>ABC (Airway, Breathing, Circulation)</p>
+                </div>
+                
+                <div class="treatment-step">
+                    <h3>Decontamination</h3>
+                    <ul class="list">
+                        <li>Emesis</li>
+                        <li>Gastric lavage</li>
+                        <li>Activated charcoal (multiple doses)</li>
+                        <li>Whole bowel irrigation (for concretions)</li>
+                    </ul>
+                </div>
+                
+                <div class="treatment-step">
+                    <h3>Antidote</h3>
+                    <p>No specific antidote available</p>
+                </div>
+                
+                <div class="treatment-step">
+                    <h3>Enhance Elimination</h3>
+                    <ul class="list">
+                        <li>Alkaline diuresis (ion trapping with NaHCO₃, fluids, K+)</li>
+                        <li>Hemodialysis (indicated when serum >100 mg/dl, CNS symptoms present, renal failure, pulmonary edema, or severe acid-base/electrolyte disturbance)</li>
+                    </ul>
+                </div>
+                
+                <div class="treatment-step">
+                    <h3>Supportive Care</h3>
+                    <ul class="list">
+                        <li>Cooling for fever</li>
+                        <li>Fluid replacement</li>
+                        <li>Vitamin K for coagulation abnormalities</li>
+                        <li>Transfusion if needed</li>
+                        <li>Benzodiazepines for seizures</li>
+                        <li>Antihistamines for hypersensitivity reactions</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <h3><i class="fas fa-flask"></i> Investigations</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>Arterial Blood Gas (ABG) analysis</li>
+                    <li>Electrolytes</li>
+                    <li>Complete Blood Count (CBC)</li>
+                    <li>Coagulation profile</li>
+                    <li>Renal and liver function tests</li>
+                    <li>Urine analysis</li>
+                    <li>Serum salicylate levels: 30–50 mg/dl (mild), 50–80 (moderate), >80 (severe)</li>
+                    <li>X-ray: pulmonary edema, concretions in abdomen</li>
+                </ul>
+            </div>
+            
+            <h3><i class="fas fa-diagnoses"></i> Differential Diagnosis</h3>
+            <div class="card">
+                <ul class="list">
+                    <li>High anion gap acidosis: DKA, liver/kidney failure, alcoholic ketoacidosis</li>
+                    <li>CNS infection or trauma</li>
+                    <li>CO or cyanide poisoning</li>
+                </ul>
+            </div>
+        </section>
+        
+        <footer>
+            <p>Salicylate Toxicity Summary - Medical Reference</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Tab functionality
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const contentSections = document.querySelectorAll('.content-section');
+            
+            tabButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const target = button.getAttribute('data-target');
+                    
+                    // Update active tab
+                    tabButtons.forEach(btn => btn.classList.remove('active'));
+                    button.classList.add('active');
+                    
+                    // Show target section
+                    contentSections.forEach(section => {
+                        section.classList.remove('active');
+                        if (section.id === target) {
+                            section.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Add subtle animations to cards on page load
+            const cards = document.querySelectorAll('.card, .pharmaco-card, .patho-card');
+            cards.forEach((card, index) => {
+                card.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

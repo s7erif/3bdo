@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neonatology 1 - Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{
+  background:linear-gradient(135deg,#141e30,#243b55);
+  color:#f5f7fa;line-height:1.6
+}
+header{
+  padding:60px 20px;text-align:center;
+  background:rgba(0,0,0,.35)
+}
+header h1{font-size:2.7rem;margin-bottom:10px}
+header p{opacity:.9}
+.container{
+  max-width:1150px;margin:40px auto;padding:0 20px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px
+}
+.card{
+  background:rgba(255,255,255,.08);
+  border-radius:18px;padding:25px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  transform:translateY(30px);opacity:0;
+  animation:fadeUp .8s ease forwards
+}
+.card:nth-child(1){animation-delay:.1s}
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.3s}
+.card:nth-child(4){animation-delay:.4s}
+.card:nth-child(5){animation-delay:.5s}
+.card:nth-child(6){animation-delay:.6s}
+.card:nth-child(7){animation-delay:.7s}
+.card:nth-child(8){animation-delay:.8s}
+.card:nth-child(9){animation-delay:.9s}
+.card h2{margin-bottom:12px;font-size:1.35rem;color:#4dd0e1}
+.card ul{list-style:none}
+.card ul li{margin-bottom:8px;padding-left:18px;position:relative}
+.card ul li::before{content:"•";position:absolute;left:0;color:#4dd0e1}
+footer{text-align:center;padding:30px 15px;opacity:.7}
+@keyframes fadeUp{to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Neonatology 1</h1>
+  <p>Modern concise summary of newborn care & assessment</p>
+</header>
+
+<section class="container">
+
+<div class="card">
+<h2>Overview</h2>
+<ul>
+<li>Newborn: first 28 days of life.</li>
+<li>Term: 37–42 weeks of gestation.</li>
+<li>Main goal: adaptation to extrauterine life.</li>
+<li>Focus on respiration, thermoregulation, and homeostasis.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Physiologic Adaptation</h2>
+<ul>
+<li>Initiation of respiration by hypoxia, cold & tactile stimuli.</li>
+<li>Surfactant prevents alveolar collapse.</li>
+<li>Thermoregulation: maintain 36.5–37.5°C.</li>
+<li>Fluid & electrolyte balance (homeostasis).</li>
+<li>Immature immunity → high infection risk.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Routine Delivery Room Care</h2>
+<ul>
+<li>Provide warmth (warm room, blankets, radiant warmer).</li>
+<li>Clear airway; suction mouth then nose.</li>
+<li>Tactile stimulation if not breathing.</li>
+<li>Umbilical cord clamping & antiseptic care.</li>
+<li>Infection prevention & eye prophylaxis.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>APGAR Score</h2>
+<ul>
+<li>Assessed at 1 and 5 minutes.</li>
+<li>Parameters: HR, respiration, tone, reflex, color.</li>
+<li>7–10: normal; 4–6: moderate depression; 0–3: severe.</li>
+<li>Persistently low score → risk of brain damage.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Normal Examination</h2>
+<ul>
+<li>Vital signs & anthropometry.</li>
+<li>Head: moulding, fontanelles.</li>
+<li>Skin: vernix, peeling, lanugo, Mongolian spots.</li>
+<li>Heart: soft systolic murmurs may be normal.</li>
+<li>Meconium within 48h; urine within 24h.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Primitive Reflexes</h2>
+<ul>
+<li>Moro (startle).</li>
+<li>Sucking & rooting.</li>
+<li>Grasp reflex.</li>
+<li>Stepping & placing.</li>
+<li>Babinski reflex (normal up to 2 years).</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Neonatal Resuscitation</h2>
+<ul>
+<li>For babies not breathing or crying at birth.</li>
+<li>Warm, dry, position, clear airway.</li>
+<li>Positive pressure ventilation if HR &lt;100/min.</li>
+<li>Chest compression if HR &lt;60/min.</li>
+<li>Early ventilation is key to success.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Feeding & Care</h2>
+<ul>
+<li>Early breastfeeding: nutrition, bonding, immunity.</li>
+<li>If unavailable: formula after clear water.</li>
+<li>Vitamin K IM to prevent bleeding.</li>
+<li>Vitamin C from 2nd week.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Classification & High Risk</h2>
+<ul>
+<li>By GA: preterm &lt;37w, term 37–41w, post-term &gt;42w.</li>
+<li>By weight: LBW &lt;2.5kg, normal, macrosomia &gt;4kg.</li>
+<li>High risk: prematurity, malformations, low Apgar.</li>
+<li>Maternal risks: DM, HTN, bleeding, poor care.</li>
+</ul>
+</div>
+
+</section>
+
+<footer>
+<p>Prepared as a modern HTML summary • Neonatology 1</p>
+</footer>
+
+</body>
+</html>

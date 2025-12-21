@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hypothyroidism - Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+}
+body {
+  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+  color: #f5f7fa;
+  line-height: 1.6;
+}
+header {
+  padding: 60px 20px;
+  text-align: center;
+  background: rgba(0,0,0,0.3);
+}
+header h1 {
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+header p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+}
+.container {
+  max-width: 1100px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transform: translateY(30px);
+  opacity: 0;
+  animation: fadeUp 0.8s ease forwards;
+}
+.card:nth-child(1){animation-delay:0.1s}
+.card:nth-child(2){animation-delay:0.2s}
+.card:nth-child(3){animation-delay:0.3s}
+.card:nth-child(4){animation-delay:0.4s}
+.card:nth-child(5){animation-delay:0.5s}
+.card:nth-child(6){animation-delay:0.6s}
+.card:nth-child(7){animation-delay:0.7s}
+.card:nth-child(8){animation-delay:0.8s}
+.card h2 {
+  margin-bottom: 12px;
+  font-size: 1.4rem;
+  color: #4dd0e1;
+}
+.card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.card ul li {
+  margin-bottom: 8px;
+  padding-left: 18px;
+  position: relative;
+}
+.card ul li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #4dd0e1;
+}
+footer {
+  text-align: center;
+  padding: 30px 15px;
+  opacity: 0.7;
+}
+@keyframes fadeUp {
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Hypothyroidism</h1>
+  <p>Modern concise summary for medical students</p>
+</header>
+
+<section class="container">
+
+  <div class="card">
+    <h2>Overview</h2>
+    <ul>
+      <li>Hypothyroidism: deficiency of thyroid hormone production.</li>
+      <li>Leads to slowing of metabolic processes.</li>
+      <li>In children, early detection is critical to prevent brain damage.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Functions of Thyroid Hormone</h2>
+    <ul>
+      <li>Brain growth, neurogenesis, and myelination.</li>
+      <li>Growth of skeleton and organs.</li>
+      <li>Increases heart rate and cardiac output.</li>
+      <li>Stimulates metabolism and oxygen consumption.</li>
+      <li>Enhances GI motility and RBC synthesis.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Classification</h2>
+    <ul>
+      <li><b>By onset:</b> Congenital or Acquired.</li>
+      <li><b>By site:</b></li>
+      <li>Primary: thyroid gland defect (↑TSH, ↓T4/T3).</li>
+      <li>Secondary/Central: pituitary or hypothalamic (↓TSH, ↓T4/T3).</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Congenital Hypothyroidism</h2>
+    <ul>
+      <li>Incidence ≈ 1 in 4000 births; more common in girls.</li>
+      <li>Main cause: thyroid dysgenesis (~85%).</li>
+      <li>Others: hormone synthesis defects, iodine deficiency, rare TSH deficiency.</li>
+      <li>Early signs: prolonged jaundice, hypotonia, constipation, poor feeding.</li>
+      <li>Late (cretinism): mental retardation, coarse features, short stature.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Screening & Diagnosis</h2>
+    <ul>
+      <li>Neonatal heel-prick screening at 3–7 days.</li>
+      <li>TSH &gt; 40 μIU/ml suggests hypothyroidism.</li>
+      <li>Low T4 confirms diagnosis.</li>
+      <li>Imaging: ultrasound or radioisotope scan.</li>
+      <li>X-ray knee: delayed ossification.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Treatment (Congenital)</h2>
+    <ul>
+      <li>Immediate levothyroxine therapy.</li>
+      <li>Dose: 10–15 μg/kg/day in neonates.</li>
+      <li>Goal: normalize TSH and keep T4 in upper normal range.</li>
+      <li>Regular monitoring of growth and development.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Acquired Hypothyroidism</h2>
+    <ul>
+      <li>More common in school-age children & adolescents.</li>
+      <li>Girls affected more than boys.</li>
+      <li>Common cause: Hashimoto thyroiditis.</li>
+      <li>Others: iodine deficiency, drugs, post-irradiation.</li>
+      <li>Features: poor growth, fatigue, cold intolerance, dry skin, goiter.</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <h2>Treatment & Prognosis</h2>
+    <ul>
+      <li>Levothyroxine 25–200 μg/day for acquired cases.</li>
+      <li>Monitor TFTs every 4–6 months.</li>
+      <li>Early treatment (&lt;3 months) → normal growth & intelligence.</li>
+      <li>Delayed treatment → risk of permanent brain damage.</li>
+    </ul>
+  </div>
+
+</section>
+
+<footer>
+  <p>Prepared as a modern HTML summary • Hypothyroidism</p>
+</footer>
+
+</body>
+</html>

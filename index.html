@@ -4,7 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Medical Summaries Index</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
 body{
@@ -17,7 +20,7 @@ body{
 }
 .container{
   width:100%;
-  max-width:700px;
+  max-width:760px;
   background:rgba(255,255,255,.08);
   border-radius:20px;
   padding:40px 30px;
@@ -27,12 +30,12 @@ body{
   animation:fadeIn .8s ease;
 }
 h1{
-  font-size:2.2rem;
+  font-size:2.3rem;
   margin-bottom:10px;
 }
 p{
   opacity:.85;
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 .list{
   display:flex;
@@ -54,22 +57,44 @@ a.item:hover{
   background:rgba(77,208,225,.25);
   transform:translateY(-3px);
 }
-.item span{
-  font-weight:600;
-}
+.item span{font-weight:600}
 .badge{
   background:#4dd0e1;
   color:#00343f;
-  padding:4px 10px;
+  padding:4px 12px;
   border-radius:20px;
   font-size:.8rem;
   font-weight:700;
 }
+
 footer{
-  margin-top:25px;
+  margin-top:30px;
   font-size:.85rem;
-  opacity:.6;
+  opacity:.8;
+  line-height:1.6;
 }
+
+.social{
+  margin:15px 0;
+  display:flex;
+  justify-content:center;
+  gap:18px;
+}
+.social a{
+  color:#4dd0e1;
+  font-size:1.4rem;
+  transition:.3s;
+}
+.social a:hover{
+  color:#fff;
+  transform:scale(1.25);
+}
+
+.donate{
+  margin-top:8px;
+  font-size:.85rem;
+}
+
 @keyframes fadeIn{
   from{opacity:0;transform:translateY(20px)}
   to{opacity:1;transform:translateY(0)}
@@ -80,7 +105,7 @@ footer{
 
 <div class="container">
   <h1>📚 بصمج بصمج</h1>
-  <p>اختار</p>
+  <p>اختار الملخص أو الكويز اللي عايز تراجعه 👇</p>
 
   <div class="list">
     <a class="item" href="hypothyroidism_summary.html">
@@ -92,41 +117,56 @@ footer{
       <span>Neonatology 1</span>
       <span class="badge">Pediatrics</span>
     </a>
+
+    <a class="item" href="neonatology2_summary.html">
+      <span>Neonatology 2</span>
+      <span class="badge">Pediatrics</span>
+    </a>
+
+    <a class="item" href="diabetes_summary.html">
+      <span>Diabetes Mellitus</span>
+      <span class="badge">Endocrine</span>
+    </a>
+
+    <a class="item" href="neonatology3_summary.html">
+      <span>Neonatology 3</span>
+      <span class="badge">Pediatrics</span>
+    </a>
+
+    <a class="item" href="neonatology4_summary.html">
+      <span>Neonatology 4</span>
+      <span class="badge">Pediatrics</span>
+    </a>
+
+    <a class="item" href="medical_quiz.html">
+      <span>📝 Medical Quiz (All Lectures)</span>
+      <span class="badge">Quiz</span>
+    </a>
   </div>
-  
-<a class="item" href="neonatology2_summary.html">
-  <span>Neonatology 2</span>
-  <span class="badge">Pediatrics</span>
-</a>
-  
-<a class="item" href="diabetes_summary.html">
-  <span>Diabetes Mellitus</span>
-  <span class="badge">Endocrine</span>
-</a>
-  
-<a class="item" href="neonatology3_summary.html">
-  <span>Neonatology 3</span>
-  <span class="badge">Pediatrics</span>
-</a>
-  
-<a class="item" href="neonatology4_summary.html">
-  <span>Neonatology 4</span>
-  <span class="badge">Pediatrics</span>
-</a>
 
-  <a class="item" href="medical_quiz.html">
-  <span>📝 Medical Quiz (All Lectures)</span>
-  <span class="badge">Quiz</span>
-</a>
-
-  
   <footer>
-    <span> اي خدمه يعم</span>
-    <span> BY : Sherif Osman</span>
+    <div>💙 أي خدمة يا عم</div>
+    <div><b>BY : Sherif Osman</b></div>
 
-    <p>
-    For Support & donation: instapay : sherif.3sman@instapay
-    </p>
+    <div class="social">
+      <a href="https://www.facebook.com/shryf.thman.462491" target="_blank" title="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/s7erif_osman.30.11/" target="_blank" title="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+      <a href="https://www.linkedin.com/in/sherif-osman-32646424b/" target="_blank" title="LinkedIn">
+        <i class="fab fa-linkedin-in"></i>
+      </a>
+      <a href="https://github.com/s7erif" target="_blank" title="GitHub">
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+
+    <div class="donate">
+      <i class="fas fa-hand-holding-heart"></i>
+      Instapay: <b>sherif.3sman@instapay</b>
+    </div>
   </footer>
 </div>
 

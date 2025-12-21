@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Neonatology 4 - Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#f5f7fa;line-height:1.6
+}
+header{
+  padding:60px 20px;text-align:center;
+  background:rgba(0,0,0,.35)
+}
+header h1{font-size:2.7rem;margin-bottom:10px}
+header p{opacity:.9}
+.container{
+  max-width:1150px;margin:40px auto;padding:0 20px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px
+}
+.card{
+  background:rgba(255,255,255,.1);
+  border-radius:18px;padding:25px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  transform:translateY(30px);opacity:0;
+  animation:fadeUp .8s ease forwards
+}
+.card:nth-child(1){animation-delay:.1s}
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.3s}
+.card:nth-child(4){animation-delay:.4s}
+.card:nth-child(5){animation-delay:.5s}
+.card:nth-child(6){animation-delay:.6s}
+.card:nth-child(7){animation-delay:.7s}
+.card:nth-child(8){animation-delay:.8s}
+.card:nth-child(9){animation-delay:.9s}
+.card:nth-child(10){animation-delay:1s}
+.card h2{margin-bottom:12px;font-size:1.35rem;color:#4dd0e1}
+.card ul{list-style:none}
+.card ul li{margin-bottom:8px;padding-left:18px;position:relative}
+.card ul li::before{content:"•";position:absolute;left:0;color:#4dd0e1}
+footer{text-align:center;padding:30px 15px;opacity:.7}
+@keyframes fadeUp{to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Neonatology 4</h1>
+  <p>Neonatal Respiratory Distress, Apnea & Hematologic Problems</p>
+</header>
+
+<section class="container">
+
+<div class="card">
+<h2>Neonatal Respiratory Distress (RD)</h2>
+<ul>
+<li>Common emergency in newborns.</li>
+<li>Signs: tachypnea &gt;60/min, retractions, grunting, nasal flaring, cyanosis.</li>
+<li>Causes: pulmonary, cardiac, CNS, metabolic, airway & chest wall.</li>
+<li>Assessment: history, exam, ABG, CXR.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Respiratory Distress Syndrome (RDS / HMD)</h2>
+<ul>
+<li>Most common in preterm infants.</li>
+<li>Due to surfactant deficiency → alveolar collapse.</li>
+<li>Risk: prematurity, male sex, C/S, diabetic mother.</li>
+<li>Features: early severe RD, ↓ air entry.</li>
+<li>CXR: reticulogranular pattern, air bronchograms.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>RDS: Management & Prevention</h2>
+<ul>
+<li>Thermoregulation, fluids, correct acidosis.</li>
+<li>CPAP or mechanical ventilation.</li>
+<li>Surfactant replacement therapy ↓ mortality.</li>
+<li>Monitor ABG, SpO₂, electrolytes.</li>
+<li>Prevention: antenatal corticosteroids (24–34 weeks).</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Transient Tachypnea of Newborn (TTN)</h2>
+<ul>
+<li>Most common cause of RD in full-term babies.</li>
+<li>Due to delayed clearance of lung fluid.</li>
+<li>Risk: C/S delivery.</li>
+<li>Mild RD, improves within 24–48 h.</li>
+<li>CXR: perihilar streaking, fluid in fissures.</li>
+<li>Treatment: supportive (O₂).</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Neonatal Pneumonia</h2>
+<ul>
+<li>Congenital, intrapartum, or postnatal.</li>
+<li>Organisms: G− (E. coli, Klebsiella), G+ (GBS), CMV, toxoplasma.</li>
+<li>Risk: PROM, prematurity, chorioamnionitis.</li>
+<li>Features: RD in first hours.</li>
+<li>Treatment: broad-spectrum antibiotics.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Meconium Aspiration Syndrome (MAS)</h2>
+<ul>
+<li>Meconium in amniotic fluid aspirated at birth.</li>
+<li>Risk: post-term, fetal distress, hypoxia.</li>
+<li>Features: severe RD, hyperinflated chest, meconium staining.</li>
+<li>CXR: patchy infiltrates, hyperinflation.</li>
+<li>Management: suction, O₂, ventilation, supportive care.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Neonatal Apnea</h2>
+<ul>
+<li>Cessation of breathing &gt;20 sec or with bradycardia/cyanosis.</li>
+<li>Common in preterms &lt;28–34 weeks.</li>
+<li>Causes: prematurity, hypoxia, sepsis, metabolic.</li>
+<li>Management: stimulation, O₂, caffeine, CPAP if needed.</li>
+<li>Usually resolves by 37 weeks GA.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Neonatal Cyanosis</h2>
+<ul>
+<li>Blue discoloration due to hypoxemia.</li>
+<li>Causes: lung disease, CHD, sepsis, CNS, metabolic.</li>
+<li>Central cyanosis is always abnormal.</li>
+<li>Needs urgent evaluation & oxygen.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Neonatal Anemia & Bleeding</h2>
+<ul>
+<li><b>Anemia:</b> due to blood loss, hemolysis, ↓ production.</li>
+<li>Features: pallor, tachycardia, poor feeding.</li>
+<li>Treatment: treat cause, transfusion if severe.</li>
+<li><b>Bleeding:</b> often due to vit K deficiency.</li>
+<li>Prevention: vitamin K at birth.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Neonatal Polycythemia</h2>
+<ul>
+<li>Hematocrit ≥65%.</li>
+<li>Causes: IDM, IUGR, delayed cord clamping.</li>
+<li>Features: plethora, hypoglycemia, RD, lethargy.</li>
+<li>Management: hydration, partial exchange if symptomatic.</li>
+</ul>
+</div>
+
+</section>
+
+<footer>
+<p>Prepared as a modern HTML summary • Neonatology 4</p>
+</footer>
+
+</body>
+</html>

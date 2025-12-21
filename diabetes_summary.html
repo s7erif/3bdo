@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diabetes Mellitus - Summary</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+body{
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#f5f7fa;line-height:1.6
+}
+header{
+  padding:60px 20px;text-align:center;
+  background:rgba(0,0,0,.35)
+}
+header h1{font-size:2.7rem;margin-bottom:10px}
+header p{opacity:.9}
+.container{
+  max-width:1150px;margin:40px auto;padding:0 20px;
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px
+}
+.card{
+  background:rgba(255,255,255,.1);
+  border-radius:18px;padding:25px;
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 25px rgba(0,0,0,.35);
+  transform:translateY(30px);opacity:0;
+  animation:fadeUp .8s ease forwards
+}
+.card:nth-child(1){animation-delay:.1s}
+.card:nth-child(2){animation-delay:.2s}
+.card:nth-child(3){animation-delay:.3s}
+.card:nth-child(4){animation-delay:.4s}
+.card:nth-child(5){animation-delay:.5s}
+.card:nth-child(6){animation-delay:.6s}
+.card:nth-child(7){animation-delay:.7s}
+.card:nth-child(8){animation-delay:.8s}
+.card:nth-child(9){animation-delay:.9s}
+.card h2{margin-bottom:12px;font-size:1.35rem;color:#4dd0e1}
+.card ul{list-style:none}
+.card ul li{margin-bottom:8px;padding-left:18px;position:relative}
+.card ul li::before{content:"•";position:absolute;left:0;color:#4dd0e1}
+footer{text-align:center;padding:30px 15px;opacity:.7}
+@keyframes fadeUp{to{transform:translateY(0);opacity:1}}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Diabetes Mellitus</h1>
+  <p>Modern concise summary for pediatric diabetes & DKA</p>
+</header>
+
+<section class="container">
+
+<div class="card">
+<h2>Definition</h2>
+<ul>
+<li>Chronic metabolic disorder characterized by hyperglycemia.</li>
+<li>Caused by insulin deficiency and/or resistance.</li>
+<li>Leads to abnormal metabolism of carbohydrates, fats and proteins.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Types of Diabetes</h2>
+<ul>
+<li><b>Type 1:</b> Insulin-dependent (juvenile onset).</li>
+<li><b>Type 2:</b> Insulin resistance, usually older age.</li>
+<li><b>Monogenic:</b> Single gene defects (rare, may present neonatally).</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Type 1 DM – Features</h2>
+<ul>
+<li>Most common endocrine disease in children.</li>
+<li>Autoimmune β-cell destruction → absolute insulin deficiency.</li>
+<li>Occurs at 5–7 years and around puberty.</li>
+<li>Associated with HLA genes.</li>
+<li>Classic symptoms: polyuria, polydipsia, weight loss, polyphagia.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Diagnosis of Diabetes</h2>
+<ul>
+<li>Fasting glucose ≥ 126 mg/dL.</li>
+<li>2-h OGTT ≥ 200 mg/dL.</li>
+<li>Random glucose ≥ 200 mg/dL with symptoms.</li>
+<li>HbA1c ≥ 6.5%.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Complications</h2>
+<ul>
+<li><b>Acute:</b> hypoglycemia, hyperglycemia, DKA, infections.</li>
+<li><b>Chronic:</b> retinopathy, nephropathy, neuropathy.</li>
+<li>Growth & pubertal delay if poorly controlled.</li>
+<li>Cardiovascular disease and autoimmune disorders.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Treatment of Type 1 DM</h2>
+<ul>
+<li>Basal–bolus insulin regimen (multiple daily injections).</li>
+<li>Total dose ≈ 0.8–1 U/kg/day.</li>
+<li>Subcutaneous injections: abdomen, thigh, arm, buttock.</li>
+<li>Balanced diet & regular exercise.</li>
+<li>Education of child and parents is essential.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Monitoring</h2>
+<ul>
+<li>Self blood glucose monitoring by glucometer.</li>
+<li>Targets: fasting 80–120 mg/dL; postprandial 100–140 mg/dL.</li>
+<li>HbA1c every 3 months (goal ~4.5–6%).</li>
+<li>Watch for hypoglycemia & injection site problems.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>Diabetic Ketoacidosis (DKA)</h2>
+<ul>
+<li>Life‑threatening complication due to insulin deficiency.</li>
+<li>Characterized by hyperglycemia, ketosis & metabolic acidosis.</li>
+<li>Often first presentation in children.</li>
+<li>Precipitated by infection, stress, missed insulin.</li>
+</ul>
+</div>
+
+<div class="card">
+<h2>DKA: Diagnosis & Management</h2>
+<ul>
+<li><b>Criteria:</b> glucose &gt;300 mg/dL, ketonemia, pH &lt;7.3 or HCO3 &lt;15.</li>
+<li>Features: dehydration, vomiting, abdominal pain, Kussmaul breathing.</li>
+<li><b>Management:</b> IV fluids, continuous IV insulin (0.1 U/kg/hr).</li>
+<li>Correct electrolytes (K⁺), monitor closely.</li>
+<li>Bicarbonate only if pH &lt;7.1.</li>
+</ul>
+</div>
+
+</section>
+
+<footer>
+<p>Prepared as a modern HTML summary • Diabetes Mellitus</p>
+</footer>
+
+</body>
+</html>

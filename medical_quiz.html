@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Medical Quiz - Auto Grading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+body{
+  margin:0;
+  background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+  color:#f5f7fa;
+}
+header{
+  text-align:center;
+  padding:40px 20px;
+  background:rgba(0,0,0,.35)
+}
+.container{
+  max-width:1000px;
+  margin:30px auto;
+  padding:20px;
+}
+.card{
+  background:rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:20px;
+  margin-bottom:15px;
+  box-shadow:0 8px 20px rgba(0,0,0,.35);
+}
+h2{color:#4dd0e1}
+.question{margin-bottom:10px;font-weight:600}
+.options label{display:block;margin:6px 0;cursor:pointer}
+button{
+  background:#4dd0e1;
+  border:none;
+  padding:14px 30px;
+  border-radius:30px;
+  font-weight:700;
+  cursor:pointer;
+  margin:30px auto;
+  display:block;
+}
+button:hover{background:#26c6da}
+#result{
+  text-align:center;
+  font-size:1.4rem;
+  margin-top:20px;
+}
+.correct{color:#4caf50}
+.wrong{color:#f44336}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📚 Medical Quiz</h1>
+  <p>Based on Hypothyroidism, Diabetes & Neonatology (1–4)</p>
+</header>
+
+<div class="container">
+
+<form id="quizForm">
+
+<script>
+const questions = [
+{q:"Hypothyroidism is characterized by:", o:["Excess thyroid hormone","Deficiency of thyroid hormone","Normal thyroid level","Pituitary hyperfunction"], a:1},
+{q:"The most common cause of congenital hypothyroidism is:", o:["Iodine excess","Thyroid dysgenesis","Pituitary tumor","Autoimmune disease"], a:1},
+{q:"Normal neonatal screening test for hypothyroidism mainly measures:", o:["T3","TSH","Calcium","Insulin"], a:1},
+{q:"Drug of choice for congenital hypothyroidism:", o:["Propylthiouracil","Levothyroxine","Methimazole","Hydrocortisone"], a:1},
+{q:"Type 1 diabetes is caused by:", o:["Insulin resistance","Autoimmune beta cell destruction","Obesity","Excess insulin"], a:1},
+{q:"Classic symptoms of type 1 DM include:", o:["Polyuria, polydipsia, weight loss","Bradycardia","Jaundice","Hypertension"], a:0},
+{q:"DKA is characterized by all except:", o:["Hyperglycemia","Ketonemia","Metabolic acidosis","Respiratory alkalosis"], a:3},
+{q:"IV insulin dose in DKA is:", o:["0.01 U/kg/hr","0.1 U/kg/hr","1 U/kg/hr","10 U/kg/hr"], a:1},
+{q:"HbA1c reflects glucose control over:", o:["1 week","1 month","3 months","1 year"], a:2},
+{q:"Normal fasting glucose target in children with DM:", o:["40–60 mg/dL","80–120 mg/dL","150–200 mg/dL","200–250 mg/dL"], a:1},
+
+{q:"A newborn is defined as age up to:", o:["7 days","14 days","28 days","2 months"], a:2},
+{q:"APGAR score is assessed at:", o:["1 and 5 minutes","5 and 10 minutes","Birth only","30 minutes"], a:0},
+{q:"Most common cause of RD in preterm infants:", o:["TTN","Pneumonia","RDS","MAS"], a:2},
+{q:"RDS is mainly due to deficiency of:", o:["Oxygen","Hemoglobin","Surfactant","Insulin"], a:2},
+{q:"Most common cause of RD in full term infants:", o:["RDS","TTN","MAS","Pneumonia"], a:1},
+{q:"MAS is associated with:", o:["Prematurity","Post-term and fetal distress","Low birth weight","Maternal diabetes only"], a:1},
+{q:"Neonatal apnea is more common in:", o:["Full term babies","Post-term babies","Preterm babies","Macrosomic babies"], a:2},
+{q:"Drug used for apnea of prematurity:", o:["Insulin","Caffeine","Morphine","Adrenaline"], a:1},
+{q:"Central cyanosis in neonate is:", o:["Always normal","Due to cold only","Always abnormal","Benign finding"], a:2},
+{q:"Vitamin K at birth prevents:", o:["Anemia","Polycythemia","Bleeding","Jaundice"], a:2},
+
+{q:"Physiological jaundice appears on:", o:["First day","2nd–3rd day","After 2 weeks","At birth"], a:1},
+{q:"Physiological jaundice is always:", o:["Conjugated","Unconjugated","Mixed","Direct"], a:1},
+{q:"Pathological jaundice is suggested by:", o:["Onset day 3","Peak <15 mg/dL","Onset in first 24h","Resolves in 7 days"], a:2},
+{q:"Breast milk jaundice peaks at:", o:["First day","First week","2nd–3rd week","After 2 months"], a:2},
+{q:"Conjugated hyperbilirubinemia presents with:", o:["Dark urine & pale stools","Clear urine","Only yellow skin","Polyuria"], a:0},
+{q:"Kernicterus is due to deposition of:", o:["Conjugated bilirubin","Unconjugated bilirubin","Hemoglobin","Iron"], a:1},
+{q:"Most common cause of hemolytic disease of newborn:", o:["G6PD","Rh incompatibility","Sepsis","Hypothyroidism"], a:1},
+{q:"Prevention of Rh disease is by:", o:["Vitamin K","Anti-D immunoglobulin","Insulin","Phototherapy"], a:1},
+{q:"Visible jaundice appears when bilirubin is about:", o:["2 mg/dL","5 mg/dL","7 mg/dL","15 mg/dL"], a:2},
+
+{q:"Polycythemia in neonate is Hct ≥:", o:["45%","55%","65%","75%"], a:2},
+{q:"Most common cause of RD in preterm:", o:["TTN","RDS","MAS","CHD"], a:1},
+{q:"CPAP is useful mainly in:", o:["Apnea & RDS","Jaundice","Polycythemia","Bleeding"], a:0},
+{q:"Early feeding is important in IDM to prevent:", o:["Hypocalcemia","Hypoglycemia","Anemia","Jaundice"], a:1},
+{q:"SGA babies are at risk of:", o:["Hyperglycemia","Hypoglycemia","Polycythemia only","Hypertension"], a:1},
+{q:"Preterm complications include all except:", o:["RDS","NEC","ROP","Hypertension"], a:3},
+{q:"TTN usually resolves within:", o:["6 hours","24–48 hours","1 week","1 month"], a:1},
+{q:"Meconium aspiration leads to:", o:["Lung hyperinflation","Collapsed lung only","No changes","Pleural effusion only"], a:0},
+{q:"Apnea of prematurity usually resolves by GA:", o:["34 weeks","37 weeks","40 weeks","1 year"], a:1},
+
+{q:"Levothyroxine dose in neonates is about:", o:["1–2 µg/kg","5 µg/kg","10–15 µg/kg","50 µg/kg"], a:2},
+{q:"Early treatment of congenital hypothyroidism prevents:", o:["Anemia","Mental retardation","Jaundice","Bleeding"], a:1},
+{q:"Most common cause of acquired hypothyroidism in children:", o:["Iodine excess","Hashimoto thyroiditis","Tumor","Infection"], a:1},
+{q:"First step in DKA management is:", o:["Insulin bolus","IV fluids","Bicarbonate","Oral feeding"], a:1},
+{q:"Target blood glucose in DKA correction before switching fluids:", o:["<100 mg/dL","<200 mg/dL","<300 mg/dL","<400 mg/dL"], a:2},
+{q:"Phototherapy works by:", o:["Increasing bilirubin","Converting bilirubin to water-soluble form","Stopping RBC destruction","Stimulating liver enzymes"], a:1},
+{q:"Most common endocrine disease in childhood:", o:["Hypothyroidism","Type 1 DM","Rickets","Cushing syndrome"], a:1},
+{q:"Physiological jaundice resolves by:", o:["3 days","7–10 days","3 weeks","2 months"], a:1}
+];
+
+document.addEventListener("DOMContentLoaded",()=>{
+  const form=document.getElementById("quizForm");
+  questions.forEach((item,i)=>{
+    const div=document.createElement("div");
+    div.className="card";
+    div.innerHTML = `<div class='question'>${i+1}. ${item.q}</div>` +
+      item.o.map((opt,j)=>`
+        <div class="options">
+          <label><input type="radio" name="q${i}" value="${j}"> ${opt}</label>
+        </div>`).join("");
+    form.appendChild(div);
+  });
+});
+</script>
+
+</form>
+
+<button onclick="submitQuiz()">Submit Quiz</button>
+<div id="result"></div>
+
+</div>
+
+<script>
+function submitQuiz(){
+  let score=0;
+  questions.forEach((item,i)=>{
+    const ans=document.querySelector(`input[name="q${i}"]:checked`);
+    if(ans && parseInt(ans.value)===item.a) score++;
+  });
+  const percent=Math.round((score/questions.length)*100);
+  document.getElementById("result").innerHTML=
+    `✅ Your Score: <span class="correct">${score}</span> / ${questions.length} (${percent}%)`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>

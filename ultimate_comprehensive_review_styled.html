@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Ultimate Pediatrics & Medicine Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+  --card:rgba(255,255,255,.08);
+  --glass:rgba(255,255,255,.12);
+  --accent:#4dd0e1;
+  --accent2:#ffeb3b;
+  --text:#f5f7fa;
+}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);
+  line-height:1.8;
+}
+header{
+  padding:70px 20px;
+  text-align:center;
+  background:linear-gradient(135deg, rgba(0,0,0,.55), rgba(0,0,0,.25));
+  position:sticky; top:0; z-index:5;
+  backdrop-filter: blur(8px);
+}
+header h1{font-size:2.8rem;margin:0 0 10px}
+header p{opacity:.9}
+
+.container{max-width:1200px;margin:30px auto;padding:20px}
+
+.toc{
+  background:var(--glass);
+  border-radius:20px;
+  padding:30px;
+  margin-bottom:40px;
+  box-shadow:0 15px 35px rgba(0,0,0,.35);
+}
+.toc h2{color:var(--accent);margin-top:0}
+.toc ul{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.toc a{
+  color:var(--accent2);
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:12px;
+  background:rgba(0,0,0,.35);
+  display:block;
+  transition:.3s;
+}
+.toc a:hover{background:rgba(77,208,225,.25);transform:translateY(-2px)}
+
+details.section{
+  background:var(--card);
+  border-radius:22px;
+  padding:0;
+  margin-bottom:35px;
+  box-shadow:0 15px 35px rgba(0,0,0,.35);
+  overflow:hidden;
+}
+details[open]{background:rgba(255,255,255,.12)}
+details summary{
+  list-style:none;
+  cursor:pointer;
+  padding:30px 35px;
+  font-size:1.9rem;
+  color:var(--accent);
+  position:relative;
+  user-select:none;
+}
+details summary::-webkit-details-marker{display:none}
+details summary::after{
+  content:"▾";
+  position:absolute;
+  right:30px; top:30px;
+  font-size:1.5rem;
+  transition:.3s;
+}
+details[open] summary::after{transform:rotate(180deg)}
+.section-content{
+  padding:0 35px 35px;
+  animation:fadeUp .5s ease;
+}
+.section-content h3{color:var(--accent2);margin-top:25px}
+.section-content ul{margin-left:25px}
+.section-content p{margin:10px 0}
+
+.quiz{
+  margin-top:30px;
+  padding:25px;
+  background:rgba(0,0,0,.4);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.15);
+}
+.quiz h4{color:var(--accent);margin-top:0}
+.quiz button{
+  margin-top:15px;
+  background:linear-gradient(135deg,var(--accent),#26c6da);
+  border:none;
+  padding:12px 34px;
+  border-radius:25px;
+  font-weight:700;
+  cursor:pointer;
+  color:#00343f;
+  transition:.3s;
+}
+.quiz button:hover{transform:translateY(-2px);box-shadow:0 10px 20px rgba(0,0,0,.4)}
+.result{margin-top:10px;font-weight:700}
+
+footer{
+  text-align:center;
+  padding:50px 20px;
+  opacity:.8;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(15px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>📚 Ultimate Pediatrics & Medicine Review</h1>
+  <p>Beautiful • Animated • Comprehensive long explanations with quizzes</p>
+</header>
+
+<div class="container">
+
+<div class="toc">
+<h2>Contents</h2>
+<ul>
+<li><a href="#hypo">Hypothyroidism</a></li>
+<li><a href="#dm">Diabetes Mellitus</a></li>
+<li><a href="#neo">Neonatology (1–5)</a></li>
+<li><a href="#cardio">Cardiology (1–4)</a></li>
+<li><a href="#inf">Infectious Diseases</a></li>
+<li><a href="#tb">Tuberculosis</a></li>
+<li><a href="#vac">Vaccination</a></li>
+</ul>
+</div>
+
+<details class="section" id="hypo" open>
+<summary>Hypothyroidism</summary>
+<div class="section-content">
+<p><b>Hypothyroidism</b> is deficiency of thyroid hormones causing generalized slowing of metabolism. In children it is critical for brain development and growth.</p>
+<h3>Physiology</h3>
+<ul>
+<li>CNS development and myelination.</li>
+<li>Linear growth and skeletal maturation.</li>
+<li>Increase basal metabolic rate.</li>
+<li>Increase heart rate and cardiac output.</li>
+</ul>
+<h3>Congenital Hypothyroidism</h3>
+<ul>
+<li>Incidence ≈ 1:3000–4000.</li>
+<li>Most common cause: thyroid dysgenesis.</li>
+<li>Features: prolonged jaundice, hypotonia, macroglossia, umbilical hernia.</li>
+</ul>
+<h3>Diagnosis & Treatment</h3>
+<ul>
+<li>Neonatal screening: TSH.</li>
+<li>Confirm: serum TSH & free T4.</li>
+<li>Treat immediately with levothyroxine 10–15 µg/kg/day.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>Most common cause of congenital hypothyroidism:</p>
+<label><input type="radio" name="qh1" value="0"> Dyshormonogenesis</label><br>
+<label><input type="radio" name="qh1" value="1"> Thyroid dysgenesis</label><br>
+<label><input type="radio" name="qh1" value="2"> Iodine excess</label><br>
+<button onclick="checkQuiz(this,'qh1',1)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+<details class="section" id="dm">
+<summary>Diabetes Mellitus</summary>
+<div class="section-content">
+<p>Chronic hyperglycemia due to insulin deficiency or resistance. Type 1 DM is most common in children.</p>
+<h3>Type 1 DM</h3>
+<ul>
+<li>Autoimmune β-cell destruction.</li>
+<li>Symptoms: polyuria, polydipsia, weight loss.</li>
+</ul>
+<h3>Diagnosis</h3>
+<ul>
+<li>Fasting glucose ≥126 mg/dL.</li>
+<li>Random ≥200 mg/dL with symptoms.</li>
+<li>HbA1c ≥6.5%.</li>
+</ul>
+<h3>Management</h3>
+<ul>
+<li>Basal–bolus insulin (0.8–1 U/kg/day).</li>
+<li>Diet control & exercise.</li>
+<li>Self-monitoring.</li>
+</ul>
+<h3>DKA</h3>
+<ul>
+<li>Dehydration, acidosis, Kussmaul breathing.</li>
+<li>Treat: IV fluids first, then insulin.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>First step in DKA management:</p>
+<label><input type="radio" name="qd1" value="0"> Insulin bolus</label><br>
+<label><input type="radio" name="qd1" value="1"> IV fluids</label><br>
+<label><input type="radio" name="qd1" value="2"> Bicarbonate</label><br>
+<button onclick="checkQuiz(this,'qd1',1)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+<details class="section" id="neo">
+<summary>Neonatology (1–5)</summary>
+<div class="section-content">
+<p>First 28 days of life with critical physiological adaptation.</p>
+<h3>Preterm</h3>
+<ul>
+<li>Born &lt;37 weeks.</li>
+<li>Problems: RDS, apnea, NEC, sepsis.</li>
+</ul>
+<h3>Jaundice</h3>
+<ul>
+<li>Physiological: day 2–3, resolves by day 10.</li>
+<li>Pathological: &lt;24 h or prolonged.</li>
+<li>Kernicterus = bilirubin encephalopathy.</li>
+</ul>
+<h3>Respiratory Distress</h3>
+<ul>
+<li>RDS, TTN, MAS, pneumonia.</li>
+</ul>
+<h3>Metabolic</h3>
+<ul>
+<li>Hypoglycemia, hypocalcemia, hypothermia.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>Physiological jaundice appears on:</p>
+<label><input type="radio" name="qn1" value="0"> Day 1</label><br>
+<label><input type="radio" name="qn1" value="1"> Day 2–3</label><br>
+<label><input type="radio" name="qn1" value="2"> After 2 weeks</label><br>
+<button onclick="checkQuiz(this,'qn1',1)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+<details class="section" id="cardio">
+<summary>Cardiology (1–4)</summary>
+<div class="section-content">
+<p>Study of congenital and acquired heart diseases in children.</p>
+<h3>Heart Failure</h3>
+<ul>
+<li>Causes: VSD, PDA, myocarditis, cardiomyopathy.</li>
+<li>Infants: poor feeding, sweating, tachypnea.</li>
+</ul>
+<h3>Management</h3>
+<ul>
+<li>Oxygen, diuretics, treat cause.</li>
+</ul>
+<h3>CHD Overview</h3>
+<ul>
+<li>L→R shunts: VSD, ASD, PDA.</li>
+<li>Cyanotic: TOF, TGA.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>Common sign of HF in infants:</p>
+<label><input type="radio" name="qc1" value="0"> Poor feeding</label><br>
+<label><input type="radio" name="qc1" value="1"> Jaundice</label><br>
+<label><input type="radio" name="qc1" value="2"> Constipation</label><br>
+<button onclick="checkQuiz(this,'qc1',0)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+<details class="section" id="inf">
+<summary>Infectious Diseases</summary>
+<div class="section-content">
+<h3>Bacterial</h3>
+<ul>
+<li>High fever, toxicity.</li>
+<li>Treat with antibiotics.</li>
+</ul>
+<h3>Viral</h3>
+<ul>
+<li>Usually self-limited.</li>
+<li>Treatment supportive.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>Main treatment of viral infections:</p>
+<label><input type="radio" name="qi1" value="0"> Antibiotics</label><br>
+<label><input type="radio" name="qi1" value="1"> Supportive care</label><br>
+<label><input type="radio" name="qi1" value="2"> Surgery</label><br>
+<button onclick="checkQuiz(this,'qi1',1)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+<details class="section" id="tb">
+<summary>Tuberculosis</summary>
+<div class="section-content">
+<p>Chronic infection caused by <i>Mycobacterium tuberculosis</i>.</p>
+<ul>
+<li>Transmission: droplets.</li>
+<li>Features: chronic cough, fever, weight loss.</li>
+<li>Treatment: multi-drug therapy ≥6 months.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>TB is transmitted mainly by:</p>
+<label><input type="radio" name="qtb1" value="0"> Food</label><br>
+<label><input type="radio" name="qtb1" value="1"> Droplets</label><br>
+<label><input type="radio" name="qtb1" value="2"> Insects</label><br>
+<button onclick="checkQuiz(this,'qtb1',1)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+<details class="section" id="vac">
+<summary>Vaccination & Preventive Pediatrics</summary>
+<div class="section-content">
+<h3>Types</h3>
+<ul>
+<li>Live: BCG, MMR.</li>
+<li>Inactivated: IPV, influenza.</li>
+<li>Toxoid: tetanus.</li>
+<li>Recombinant: hepatitis B.</li>
+</ul>
+<h3>Benefits</h3>
+<ul>
+<li>Prevents diseases.</li>
+<li>Herd immunity.</li>
+</ul>
+<div class="quiz">
+<h4>Quiz</h4>
+<p>BCG vaccine protects against:</p>
+<label><input type="radio" name="qv1" value="0"> Measles</label><br>
+<label><input type="radio" name="qv1" value="1"> Tuberculosis</label><br>
+<label><input type="radio" name="qv1" value="2"> Polio</label><br>
+<button onclick="checkQuiz(this,'qv1',1)">Check</button>
+<div class="result"></div>
+</div>
+</div>
+</details>
+
+</div>
+
+<footer>
+<p>Prepared for Sherif Osman • Ultimate Comprehensive Review</p>
+</footer>
+
+<script>
+function checkQuiz(btn, name, correct){
+  const res = btn.parentElement.querySelector(".result");
+  const ans = document.querySelector('input[name="'+name+'"]:checked');
+  if(!ans){
+    res.textContent = "❗ Please choose an answer first.";
+    res.style.color = "#ffeb3b";
+    return;
+  }
+  if(parseInt(ans.value)===correct){
+    res.textContent = "✅ Correct!";
+    res.style.color = "#4caf50";
+  }else{
+    res.textContent = "❌ Wrong. Try again.";
+    res.style.color = "#f44336";
+  }
+}
+</script>
+
+</body>
+</html>

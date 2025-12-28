@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cardiology 3 - Comprehensive Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+  --card:rgba(255,255,255,.1);
+  --accent:#4dd0e1; --accent2:#ffeb3b; --text:#f5f7fa;
+}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);
+}
+header{
+  padding:30px 20px;
+  text-align:center;
+  background:rgba(0,0,0,.45);
+  position:sticky; top:0; z-index:5;
+  backdrop-filter:blur(8px);
+}
+header h1{margin:0;font-size:1.8rem;color:var(--accent)}
+header p{margin:5px 0 0;opacity:.9}
+
+.container{max-width:1200px;margin:30px auto;padding:20px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,.35);
+  animation:fadeUp .6s ease both;
+}
+.card h2{margin-top:0;color:var(--accent)}
+.card h3{color:var(--accent2);margin-top:15px}
+.card p{line-height:1.7}
+.card ul{margin-left:20px}
+
+.quiz{
+  margin-top:15px;
+  padding:15px;
+  background:rgba(0,0,0,.4);
+  border-radius:15px;
+}
+.quiz h4{margin-top:0;color:var(--accent)}
+.quiz button{
+  margin-top:10px;
+  background:linear-gradient(135deg,var(--accent),#26c6da);
+  border:none;
+  padding:10px 25px;
+  border-radius:20px;
+  font-weight:700;
+  cursor:pointer;
+}
+.result{margin-top:8px;font-weight:700}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  opacity:.7;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Cardiology 3</h1>
+  <p>Heart Murmurs & Pediatric Arrhythmias</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p><b>Cardio 3</b> focuses on the evaluation of heart murmurs in children and common pediatric arrhythmias, their causes, clinical presentation, investigations, and management.</p>
+    </div>
+
+    <div class="card">
+      <h2>Heart Murmur</h2>
+      <p>A <b>heart murmur</b> is a sound produced by turbulent blood flow within the heart or great vessels, heard during cardiac auscultation.</p>
+      <ul>
+        <li>May be innocent (physiologic) or pathological.</li>
+        <li>Very common in childhood.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Innocent (Functional) Murmurs</h2>
+      <ul>
+        <li>No structural heart disease.</li>
+        <li>Child is asymptomatic.</li>
+        <li>Soft (grade ≤2), systolic, short.</li>
+        <li>Vary with position or activity.</li>
+        <li>Examples: Still’s murmur, pulmonary flow murmur.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Pathological Murmurs</h2>
+      <ul>
+        <li>Associated with symptoms: cyanosis, dyspnea, failure to thrive.</li>
+        <li>Loud (grade ≥3), harsh, pansystolic or diastolic.</li>
+        <li>Associated abnormal heart sounds.</li>
+        <li>Often due to CHD (VSD, PDA, AS).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Red Flags in Murmurs</h2>
+      <ul>
+        <li>Diastolic murmur.</li>
+        <li>Holosystolic murmur.</li>
+        <li>Grade ≥3/6.</li>
+        <li>Cyanosis or heart failure.</li>
+        <li>Abnormal pulses or blood pressure.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Evaluation of a Murmur</h2>
+      <ul>
+        <li>Detailed history: symptoms, growth, family history.</li>
+        <li>Physical exam: location, timing, intensity.</li>
+        <li>ECG and Chest X-ray if needed.</li>
+        <li><b>Echocardiography</b> is diagnostic.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Arrhythmias in Children</h2>
+      <p><b>Arrhythmia</b> is any abnormality in heart rhythm due to problems in impulse formation or conduction.</p>
+      <ul>
+        <li>May be benign or life-threatening.</li>
+        <li>Present with palpitations, syncope, or shock.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Supraventricular Tachycardia (SVT)</h2>
+      <ul>
+        <li>Most common arrhythmia in children.</li>
+        <li>HR often &gt;220/min in infants.</li>
+        <li>Symptoms: poor feeding, irritability, pallor.</li>
+        <li>ECG: narrow QRS tachycardia.</li>
+        <li>Treat: vagal maneuvers → adenosine.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Ventricular Tachycardia (VT)</h2>
+      <ul>
+        <li>Wide QRS tachycardia.</li>
+        <li>Often associated with heart disease.</li>
+        <li>May cause hypotension or collapse.</li>
+        <li>Treat: cardioversion if unstable, antiarrhythmics.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Bradyarrhythmias & Heart Block</h2>
+      <ul>
+        <li>Sinus bradycardia: often benign.</li>
+        <li>Complete heart block: very low HR.</li>
+        <li>May present with syncope or heart failure.</li>
+        <li>Pacemaker indicated in symptomatic cases.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Clinical Presentation of Arrhythmias</h2>
+      <ul>
+        <li>Palpitations.</li>
+        <li>Dizziness or syncope.</li>
+        <li>Poor feeding, lethargy in infants.</li>
+        <li>Shock in severe cases.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Investigations</h2>
+      <ul>
+        <li>12-lead ECG.</li>
+        <li>Holter monitoring.</li>
+        <li>Event recorder.</li>
+        <li>Echocardiography to exclude structural disease.</li>
+        <li>Electrolytes and drug levels if indicated.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Management Principles</h2>
+      <ul>
+        <li>Assess hemodynamic stability.</li>
+        <li>Acute treatment according to rhythm.</li>
+        <li>Correct underlying causes.</li>
+        <li>Long-term: antiarrhythmics or ablation.</li>
+        <li>Parental education.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Prognosis</h2>
+      <ul>
+        <li>Innocent murmurs: excellent, no treatment needed.</li>
+        <li>SVT: good with proper management.</li>
+        <li>Serious arrhythmias: depend on cause and response.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Quick Quiz</h2>
+      <div class="quiz">
+        <p>Most common arrhythmia in children is:</p>
+        <label><input type="radio" name="q1" value="0"> Ventricular tachycardia</label><br>
+        <label><input type="radio" name="q1" value="1"> Supraventricular tachycardia</label><br>
+        <label><input type="radio" name="q1" value="2"> Atrial fibrillation</label><br>
+        <button onclick="checkQuiz('q1',1,this)">Check</button>
+        <div class="result"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>Prepared for Sherif Osman • Cardiology 3 Review</p>
+</footer>
+
+<script>
+function checkQuiz(name, correct, btn){
+  const res = btn.parentElement.querySelector(".result");
+  const ans = document.querySelector('input[name="'+name+'"]:checked');
+  if(!ans){
+    res.textContent = "❗ Please choose an answer.";
+    res.style.color = "#ffeb3b";
+    return;
+  }
+  if(parseInt(ans.value)===correct){
+    res.textContent = "✅ Correct!";
+    res.style.color = "#4caf50";
+  }else{
+    res.textContent = "❌ Wrong. Try again.";
+    res.style.color = "#f44336";
+  }
+}
+</script>
+
+</body>
+</html>

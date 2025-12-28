@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Cardiology 4 - Comprehensive Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+  --card:rgba(255,255,255,.1);
+  --accent:#4dd0e1; --accent2:#ffeb3b; --text:#f5f7fa;
+}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);
+}
+header{
+  padding:30px 20px;
+  text-align:center;
+  background:rgba(0,0,0,.45);
+  position:sticky; top:0; z-index:5;
+  backdrop-filter:blur(8px);
+}
+header h1{margin:0;font-size:1.8rem;color:var(--accent)}
+header p{margin:5px 0 0;opacity:.9}
+
+.container{max-width:1200px;margin:30px auto;padding:20px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,.35);
+  animation:fadeUp .6s ease both;
+}
+.card h2{margin-top:0;color:var(--accent)}
+.card h3{color:var(--accent2);margin-top:15px}
+.card p{line-height:1.7}
+.card ul{margin-left:20px}
+
+.quiz{
+  margin-top:15px;
+  padding:15px;
+  background:rgba(0,0,0,.4);
+  border-radius:15px;
+}
+.quiz h4{margin-top:0;color:var(--accent)}
+.quiz button{
+  margin-top:10px;
+  background:linear-gradient(135deg,var(--accent),#26c6da);
+  border:none;
+  padding:10px 25px;
+  border-radius:20px;
+  font-weight:700;
+  cursor:pointer;
+}
+.result{margin-top:8px;font-weight:700}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  opacity:.7;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Cardiology 4</h1>
+  <p>Rheumatic Fever, Cardiomyopathies & Pediatric Hypertension</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p><b>Cardio 4</b> covers important acquired heart diseases in children including <b>acute rheumatic fever (ARF)</b>, <b>rheumatic heart disease (RHD)</b>, <b>cardiomyopathies</b>, <b>infective endocarditis</b>, and <b>hypertension</b>.</p>
+    </div>
+
+    <div class="card">
+      <h2>Acute Rheumatic Fever (ARF)</h2>
+      <p>ARF is an autoimmune inflammatory disease that follows infection with <i>Group A β-hemolytic streptococcus</i>.</p>
+      <ul>
+        <li>Affects heart, joints, CNS, skin.</li>
+        <li>Common in school-age children.</li>
+        <li>Leads to chronic rheumatic heart disease.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Jones Criteria</h2>
+      <h3>Major</h3>
+      <ul>
+        <li>Carditis</li>
+        <li>Polyarthritis</li>
+        <li>Chorea</li>
+        <li>Erythema marginatum</li>
+        <li>Subcutaneous nodules</li>
+      </ul>
+      <h3>Minor</h3>
+      <ul>
+        <li>Fever</li>
+        <li>Arthralgia</li>
+        <li>Elevated ESR/CRP</li>
+        <li>Prolonged PR interval</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Carditis in ARF</h2>
+      <ul>
+        <li>Pancarditis: endocardium, myocardium, pericardium.</li>
+        <li>Mitral valve most commonly affected.</li>
+        <li>Features: tachycardia, murmurs, heart failure.</li>
+        <li>Echocardiography confirms diagnosis.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Management of ARF</h2>
+      <ul>
+        <li>Eradicate streptococcus: benzathine penicillin.</li>
+        <li>Anti-inflammatory: aspirin or steroids.</li>
+        <li>Treat heart failure if present.</li>
+        <li>Bed rest during acute phase.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Secondary Prophylaxis</h2>
+      <ul>
+        <li>Long-term benzathine penicillin IM every 3–4 weeks.</li>
+        <li>Prevents recurrence and progression to RHD.</li>
+        <li>Duration depends on cardiac involvement.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Rheumatic Heart Disease (RHD)</h2>
+      <ul>
+        <li>Chronic valvular damage following ARF.</li>
+        <li>Most common: mitral stenosis/regurgitation.</li>
+        <li>May lead to heart failure, arrhythmias, emboli.</li>
+        <li>Management: medical therapy or valve surgery.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Cardiomyopathies</h2>
+      <ul>
+        <li><b>Dilated:</b> systolic dysfunction, most common.</li>
+        <li><b>Hypertrophic:</b> thick LV walls, may cause sudden death.</li>
+        <li><b>Restrictive:</b> impaired filling.</li>
+        <li>Causes: genetic, viral, metabolic.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Clinical Features of Cardiomyopathy</h2>
+      <ul>
+        <li>Heart failure symptoms.</li>
+        <li>Arrhythmias.</li>
+        <li>Syncope.</li>
+        <li>Sudden cardiac death (especially HCM).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Management of Cardiomyopathy</h2>
+      <ul>
+        <li>Heart failure therapy.</li>
+        <li>Antiarrhythmic drugs if needed.</li>
+        <li>ICD in high-risk HCM.</li>
+        <li>Heart transplantation in severe cases.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Infective Endocarditis</h2>
+      <ul>
+        <li>Infection of endocardial surface.</li>
+        <li>Risk: CHD, prosthetic valves.</li>
+        <li>Features: fever, murmur, embolic signs.</li>
+        <li>Diagnosis: blood cultures, echo.</li>
+        <li>Treatment: prolonged IV antibiotics.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Pediatric Hypertension</h2>
+      <ul>
+        <li>BP ≥95th percentile for age, sex, height.</li>
+        <li>Secondary causes common: renal, coarctation.</li>
+        <li>Symptoms: often asymptomatic, headache.</li>
+        <li>Evaluate with BP measurements & investigations.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Management of Hypertension</h2>
+      <ul>
+        <li>Lifestyle: diet, weight control, exercise.</li>
+        <li>Treat underlying cause.</li>
+        <li>Drugs: ACE inhibitors, beta-blockers, CCBs.</li>
+        <li>Urgent management in hypertensive emergencies.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Quick Quiz</h2>
+      <div class="quiz">
+        <p>Most commonly affected valve in rheumatic heart disease is:</p>
+        <label><input type="radio" name="q1" value="0"> Aortic valve</label><br>
+        <label><input type="radio" name="q1" value="1"> Mitral valve</label><br>
+        <label><input type="radio" name="q1" value="2"> Tricuspid valve</label><br>
+        <button onclick="checkQuiz('q1',1,this)">Check</button>
+        <div class="result"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>Prepared for Sherif Osman • Cardiology 4 Review</p>
+</footer>
+
+<script>
+function checkQuiz(name, correct, btn){
+  const res = btn.parentElement.querySelector(".result");
+  const ans = document.querySelector('input[name="'+name+'"]:checked');
+  if(!ans){
+    res.textContent = "❗ Please choose an answer.";
+    res.style.color = "#ffeb3b";
+    return;
+  }
+  if(parseInt(ans.value)===correct){
+    res.textContent = "✅ Correct!";
+    res.style.color = "#4caf50";
+  }else{
+    res.textContent = "❌ Wrong. Try again.";
+    res.style.color = "#f44336";
+  }
+}
+</script>
+
+</body>
+</html>

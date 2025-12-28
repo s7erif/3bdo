@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Neonatology 5 - Comprehensive Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+  --card:rgba(255,255,255,.1);
+  --accent:#4dd0e1; --accent2:#ffeb3b; --text:#f5f7fa;
+}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);
+}
+header{
+  padding:30px 20px;
+  text-align:center;
+  background:rgba(0,0,0,.45);
+  position:sticky; top:0; z-index:5;
+  backdrop-filter:blur(8px);
+}
+header h1{margin:0;font-size:1.8rem;color:var(--accent)}
+header p{margin:5px 0 0;opacity:.9}
+
+.container{max-width:1200px;margin:30px auto;padding:20px}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,.35);
+  animation:fadeUp .6s ease both;
+}
+.card h2{margin-top:0;color:var(--accent)}
+.card h3{color:var(--accent2);margin-top:15px}
+.card p{line-height:1.7}
+.card ul{margin-left:20px}
+
+.quiz{
+  margin-top:15px;
+  padding:15px;
+  background:rgba(0,0,0,.4);
+  border-radius:15px;
+}
+.quiz h4{margin-top:0;color:var(--accent)}
+.quiz button{
+  margin-top:10px;
+  background:linear-gradient(135deg,var(--accent),#26c6da);
+  border:none;
+  padding:10px 25px;
+  border-radius:20px;
+  font-weight:700;
+  cursor:pointer;
+}
+.result{margin-top:8px;font-weight:700}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  opacity:.7;
+}
+
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Neonatology 5</h1>
+  <p>Neonatal Sepsis, Asphyxia & Emergency Care</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p><b>Neonatology 5</b> focuses on common neonatal emergencies including neonatal sepsis, birth asphyxia, hypoglycemia, hypothermia, and principles of neonatal resuscitation and intensive care.</p>
+    </div>
+
+    <div class="card">
+      <h2>Neonatal Sepsis</h2>
+      <p>Systemic infection occurring in the first 28 days of life with high morbidity and mortality.</p>
+      <h3>Types</h3>
+      <ul>
+        <li><b>Early-onset:</b> within 72 hours (maternal origin).</li>
+        <li><b>Late-onset:</b> after 72 hours (hospital/community).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Etiology & Risk Factors</h2>
+      <ul>
+        <li>Prematurity and low birth weight.</li>
+        <li>Prolonged rupture of membranes.</li>
+        <li>Maternal fever or infection.</li>
+        <li>Unclean delivery practices.</li>
+        <li>Invasive procedures.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Clinical Features of Sepsis</h2>
+      <ul>
+        <li>Poor feeding, lethargy.</li>
+        <li>Temperature instability.</li>
+        <li>Respiratory distress, apnea.</li>
+        <li>Jaundice.</li>
+        <li>Seizures or shock in severe cases.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Diagnosis of Sepsis</h2>
+      <ul>
+        <li>Blood culture (gold standard).</li>
+        <li>Complete blood count.</li>
+        <li>CRP and procalcitonin.</li>
+        <li>CSF analysis if meningitis suspected.</li>
+        <li>Chest X-ray if respiratory signs.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Management of Sepsis</h2>
+      <ul>
+        <li>Start empirical IV antibiotics immediately.</li>
+        <li>Common regimen: ampicillin + gentamicin.</li>
+        <li>Supportive care: oxygen, fluids.</li>
+        <li>Thermal and glucose control.</li>
+        <li>Modify antibiotics based on culture.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Birth Asphyxia</h2>
+      <p>Failure to initiate and sustain breathing at birth leading to hypoxia and acidosis.</p>
+      <ul>
+        <li>Risk factors: prolonged labor, cord prolapse, placental abruption.</li>
+        <li>Low Apgar score at 1 and 5 minutes.</li>
+        <li>May lead to hypoxic-ischemic encephalopathy (HIE).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Clinical Features of HIE</h2>
+      <ul>
+        <li>Altered consciousness.</li>
+        <li>Abnormal tone and reflexes.</li>
+        <li>Seizures.</li>
+        <li>Poor feeding.</li>
+        <li>Respiratory failure.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Neonatal Resuscitation</h2>
+      <ul>
+        <li>Warm, dry, and position airway.</li>
+        <li>Clear secretions if needed.</li>
+        <li>Start ventilation if HR &lt;100/min.</li>
+        <li>Chest compressions if HR &lt;60/min.</li>
+        <li>Medications: epinephrine if required.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Neonatal Hypoglycemia</h2>
+      <ul>
+        <li>Common in preterm, SGA, IDM.</li>
+        <li>Symptoms: jitteriness, apnea, seizures.</li>
+        <li>Treat with early feeding or IV dextrose.</li>
+        <li>Maintain glucose &gt;45 mg/dL.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Neonatal Hypothermia</h2>
+      <ul>
+        <li>Temperature &lt;36.5°C.</li>
+        <li>Causes: prematurity, cold environment.</li>
+        <li>Complications: hypoglycemia, acidosis.</li>
+        <li>Prevention: warm chain, skin-to-skin care.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Prevention & Prognosis</h2>
+      <ul>
+        <li>Aseptic delivery and hand hygiene.</li>
+        <li>Early breastfeeding.</li>
+        <li>Timely recognition and referral.</li>
+        <li>Outcome depends on severity and early treatment.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Quick Quiz</h2>
+      <div class="quiz">
+        <p>Most common first-line empirical antibiotics for early neonatal sepsis:</p>
+        <label><input type="radio" name="q1" value="0"> Ceftriaxone + vancomycin</label><br>
+        <label><input type="radio" name="q1" value="1"> Ampicillin + gentamicin</label><br>
+        <label><input type="radio" name="q1" value="2"> Amoxicillin only</label><br>
+        <button onclick="checkQuiz('q1',1,this)">Check</button>
+        <div class="result"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>Prepared for Sherif Osman • Neonatology 5 Review</p>
+</footer>
+
+<script>
+function checkQuiz(name, correct, btn){
+  const res = btn.parentElement.querySelector(".result");
+  const ans = document.querySelector('input[name="'+name+'"]:checked');
+  if(!ans){
+    res.textContent = "❗ Please choose an answer.";
+    res.style.color = "#ffeb3b";
+    return;
+  }
+  if(parseInt(ans.value)===correct){
+    res.textContent = "✅ Correct!";
+    res.style.color = "#4caf50";
+  }else{
+    res.textContent = "❌ Wrong. Try again.";
+    res.style.color = "#f44336";
+  }
+}
+</script>
+
+</body>
+</html>

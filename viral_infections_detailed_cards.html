@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Viral Infections in Children - Comprehensive Review</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg1:#0f2027; --bg2:#203a43; --bg3:#2c5364;
+  --card:rgba(255,255,255,.1);
+  --accent:#4dd0e1; --accent2:#ffeb3b; --text:#f5f7fa;
+}
+*{box-sizing:border-box;font-family:'Inter',sans-serif}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:linear-gradient(135deg,var(--bg1),var(--bg2),var(--bg3));
+  color:var(--text);
+}
+header{
+  padding:30px 20px;
+  text-align:center;
+  background:rgba(0,0,0,.45);
+  position:sticky; top:0; z-index:5;
+  backdrop-filter:blur(8px);
+}
+header h1{margin:0;font-size:1.8rem;color:var(--accent)}
+header p{margin:5px 0 0;opacity:.9}
+
+.container{max-width:1200px;margin:30px auto;padding:20px}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  box-shadow:0 15px 30px rgba(0,0,0,.35);
+  animation:fadeUp .6s ease both;
+}
+.card h2{margin-top:0;color:var(--accent)}
+.card h3{color:var(--accent2);margin-top:15px}
+.card p{line-height:1.7}
+.card ul{margin-left:20px}
+
+.quiz{
+  margin-top:15px;
+  padding:15px;
+  background:rgba(0,0,0,.4);
+  border-radius:15px;
+}
+.quiz h4{margin-top:0;color:var(--accent)}
+.quiz button{
+  margin-top:10px;
+  background:linear-gradient(135deg,var(--accent),#26c6da);
+  border:none;
+  padding:10px 25px;
+  border-radius:20px;
+  font-weight:700;
+  cursor:pointer;
+}
+.result{margin-top:8px;font-weight:700}
+
+footer{
+  text-align:center;
+  padding:30px 15px;
+  opacity:.7;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(20px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Viral Infections in Children</h1>
+  <p>Exanthematous & Systemic Viral Diseases</p>
+</header>
+
+<div class="container">
+  <div class="grid">
+
+    <div class="card">
+      <h2>Overview</h2>
+      <p>Pediatric viral infections are common causes of fever and rash in children. They are usually self-limited but may cause serious complications, especially in infants and immunocompromised patients.</p>
+    </div>
+
+    <div class="card">
+      <h2>Common Viral Exanthems</h2>
+      <ul>
+        <li>Measles (Rubeola)</li>
+        <li>Rubella (German measles)</li>
+        <li>Varicella (Chickenpox)</li>
+        <li>Mumps</li>
+        <li>Infectious mononucleosis (EBV)</li>
+        <li>Erythema infectiosum (Parvovirus B19)</li>
+        <li>Roseola infantum (HHV-6/7)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Measles</h2>
+      <ul>
+        <li>Highly contagious RNA virus.</li>
+        <li>Prodrome: fever, cough, coryza, conjunctivitis.</li>
+        <li><b>Koplik spots</b> on buccal mucosa.</li>
+        <li>Maculopapular rash starts at face → spreads downward.</li>
+        <li>Complications: pneumonia, otitis media, encephalitis.</li>
+        <li>Management: supportive + vitamin A.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Rubella</h2>
+      <ul>
+        <li>Mild illness with low-grade fever.</li>
+        <li>Posterior auricular & occipital lymphadenopathy.</li>
+        <li>Rash spreads rapidly and fades within 3 days.</li>
+        <li>Major risk: <b>congenital rubella syndrome</b>.</li>
+        <li>Prevention: MMR vaccination.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Varicella (Chickenpox)</h2>
+      <ul>
+        <li>Vesicular rash in crops: macule → papule → vesicle → crust.</li>
+        <li>Pleomorphic rash is characteristic.</li>
+        <li>Starts on trunk and face.</li>
+        <li>Complications: secondary infection, pneumonia, encephalitis.</li>
+        <li>Treatment: supportive ± acyclovir in high-risk.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Mumps</h2>
+      <ul>
+        <li>Painful parotid gland swelling.</li>
+        <li>Fever, malaise.</li>
+        <li>Complications: orchitis, meningitis, pancreatitis, deafness.</li>
+        <li>Treatment: supportive.</li>
+        <li>Prevention: MMR vaccine.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Infectious Mononucleosis (EBV)</h2>
+      <ul>
+        <li>Fever, sore throat, fatigue.</li>
+        <li>Generalized lymphadenopathy.</li>
+        <li>Hepatosplenomegaly.</li>
+        <li>Atypical lymphocytosis.</li>
+        <li>Avoid sports → risk of splenic rupture.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Erythema Infectiosum (Parvovirus B19)</h2>
+      <ul>
+        <li>"Slapped cheek" rash.</li>
+        <li>Lacy rash on trunk and limbs.</li>
+        <li>Mild illness, usually afebrile.</li>
+        <li>Risk: aplastic crisis in hemolytic anemia.</li>
+        <li>Supportive treatment.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Roseola Infantum</h2>
+      <ul>
+        <li>High fever for 3–5 days → sudden fall.</li>
+        <li>Then maculopapular rash appears.</li>
+        <li>Common in infants &lt;2 years.</li>
+        <li>Complication: febrile convulsions.</li>
+        <li>Treatment: antipyretics.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Diagnosis</h2>
+      <ul>
+        <li>Usually clinical based on rash pattern.</li>
+        <li>Serology or PCR if needed.</li>
+        <li>CBC: lymphocytosis in many viral infections.</li>
+        <li>Specific tests for EBV, rubella, measles if suspected.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Management Principles</h2>
+      <ul>
+        <li>Supportive care: fluids, antipyretics.</li>
+        <li>Avoid aspirin (risk of Reye syndrome).</li>
+        <li>Antivirals in selected cases (acyclovir).</li>
+        <li>Treat complications.</li>
+        <li>Isolation for contagious cases.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Prevention</h2>
+      <ul>
+        <li>Routine immunization (MMR, varicella).</li>
+        <li>Hand hygiene & infection control.</li>
+        <li>Post-exposure prophylaxis if indicated.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>Quick Quiz</h2>
+      <div class="quiz">
+        <p>Which viral infection presents with "slapped cheek" rash?</p>
+        <label><input type="radio" name="q1" value="0"> Measles</label><br>
+        <label><input type="radio" name="q1" value="1"> Erythema infectiosum</label><br>
+        <label><input type="radio" name="q1" value="2"> Varicella</label><br>
+        <button onclick="checkQuiz('q1',1,this)">Check</button>
+        <div class="result"></div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<footer>
+  <p>Prepared for Sherif Osman • Viral Infections Review</p>
+</footer>
+
+<script>
+function checkQuiz(name, correct, btn){
+  const res = btn.parentElement.querySelector(".result");
+  const ans = document.querySelector('input[name="'+name+'"]:checked');
+  if(!ans){
+    res.textContent = "❗ Please choose an answer.";
+    res.style.color = "#ffeb3b";
+    return;
+  }
+  if(parseInt(ans.value)===correct){
+    res.textContent = "✅ Correct!";
+    res.style.color = "#4caf50";
+  }else{
+    res.textContent = "❌ Wrong. Try again.";
+    res.style.color = "#f44336";
+  }
+}
+</script>
+
+</body>
+</html>
